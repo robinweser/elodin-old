@@ -1,0 +1,60 @@
+{
+  "name": "elodin",
+  "version": "0.1.1",
+  "description": "Linting tools for JavaScript style objects",
+  "main": "lib/index.js",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "Changelog.md",
+    "lib/",
+    "docs/"
+  ],
+  "repository": "https://github.com/rofrischmann/elodin",
+  "scripts": {
+    "babel": "babel -d lib modules",
+    "check": "npm run lint && npm run test:coverage && npm run flow",
+    "flow": "flow",
+    "generate": "node ./generator/generateFullSupportData.js && node ./generator/generatePartialSupportData.js",
+    "lint": "eslint modules",
+    "release": "npm run check && npm run generate && npm run babel && npm publish",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "jest": {
+    "rootDir": "modules"
+  },
+  "keywords": [
+    "react",
+    "react styling",
+    "inline styles",
+    "linter",
+    "cssinjs",
+    "style linting"
+  ],
+  "author": "Robin Frischmann",
+  "license": "MIT",
+  "dependencies": {
+    "bredon": "^1.0.1",
+    "css-in-js-utils": "^1.0.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-jest": "^18.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "codeclimate-test-reporter": "^0.4.0",
+    "eslint": "^3.14.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-flowtype": "^2.30.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
+    "flow-bin": "^0.38.0",
+    "jest": "^18.1.0",
+    "sinon": "^1.17.7"
+  }
+}
