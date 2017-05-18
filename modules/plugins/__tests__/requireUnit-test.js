@@ -25,7 +25,7 @@ describe('Requiring a unit', () => {
   })
 
   it('should generate the correct description', () => {
-    const style = { fontSize: '40px' }
+    const style = { fontSize: 40 }
     const warnings = []
     const addWarning = addWarningFactory(warnings)
 
@@ -52,7 +52,7 @@ describe('Requiring a unit', () => {
     const warnings = []
     const addWarning = addWarningFactory(warnings)
 
-    requireUnit({ style, addWarning, autoFix: true }, { unit: 'em' })
+    requireUnit({ style, addWarning, autoFix: true }, 'em')
 
     expect(warnings.length).toBe(0)
     expect(style).toEqual({ fontSize: '40em' })

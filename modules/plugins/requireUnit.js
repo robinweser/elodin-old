@@ -7,10 +7,10 @@ import type PluginInterface from '../../types/PluginInterface'
 
 export function requireUnit(
   { style, addWarning, autoFix }: PluginInterface,
-  unit: string
+  unit: string = 'px'
 ): void {
   objectEach(style, (value, property) => {
-    if (isUnitlessProperty(property) && typeof value === 'number') {
+    if (!isUnitlessProperty(property) && typeof value === 'number') {
       const dimension = value + unit
 
       if (autoFix) {
@@ -30,4 +30,4 @@ export function requireUnit(
 }
 
 export default (options: Object = {}) => (pluginInterface: PluginInterface) =>
-  requireUnit(pluginInterface, options.unit || 'px')
+  requireUnit(pluginInterface, options.unit)
