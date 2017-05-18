@@ -2,7 +2,7 @@ import { preferNumber } from '../preferNumber'
 import addWarningFactory from '../../utils/addWarningFactory'
 import getStyleAST from '../../utils/getStyleAST'
 
-describe('Prefering number values', () => {
+describe('Checking for shorthand properties', () => {
   it('should do nothing if string values are used', () => {
     const style = { fontSize: 40 }
     const warnings = []
