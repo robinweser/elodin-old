@@ -1,4 +1,4 @@
-import noShorthand from '../noShorthand'
+import { noShorthand } from '../noShorthand'
 import addWarningFactory from '../../utils/addWarningFactory'
 
 describe('Checking for shorthand properties', () => {

@@ -6,10 +6,7 @@ import { shorthandLonghand, shorthands } from '../../data/shorthandLonghand'
 
 import type PluginInterface from '../../types/PluginInterface'
 
-export default function noShorthand({
-  style,
-  addWarning
-}: PluginInterface): void {
+export function noShorthand({ style, addWarning }: PluginInterface): void {
   objectEach(style, (value, property) => {
     const shorthand = normalizeProperty(property)
 
@@ -25,3 +22,5 @@ export default function noShorthand({
     }
   })
 }
+
+export default () => noShorthand
