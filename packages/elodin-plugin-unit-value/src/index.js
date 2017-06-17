@@ -70,8 +70,6 @@ function runRules(
         } else if (enforceUnit) {
           const allowedUnits = getAllowedUnitsForProperty(property, enforceUnit)
 
-          console.log(allowedUnits, node.unit)
-
           if (allowedUnits.indexOf(node.unit) === -1) {
             // TODO: fix
             const dimension = node.value + allowedUnits[0]

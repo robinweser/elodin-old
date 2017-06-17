@@ -46,8 +46,8 @@ describe('Enforcing units', () => {
       enforceUnit: {
         units: ['px', 'em'],
         unitsPerProperty: {
-          fontSize: 'pt',
-          height: 'px'
+          fontSize: ['pt'],
+          height: ['px']
         }
       }
     })(
@@ -61,7 +61,7 @@ describe('Enforcing units', () => {
     expect(warnings.length).toBe(1)
     expect(warnings[0]).toEqual({
       type: 'UNIT_VALUE',
-      description: 'Do not use the unit "em" for "fontSize". Use one of "px".',
+      description: 'Do not use the unit "em" for "height". Use one of "px".',
       property: 'height',
       suggestion: '10px',
       allowedUnits: ['px'],
