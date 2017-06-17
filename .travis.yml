@@ -3,6 +3,9 @@ node_js:
   - "5"
 script:
   - npm run check
+before_script:
+  - npm run bootstrap
+  - npm run build
 after_script:
   - codeclimate-test-reporter < coverage/lcov.info
 notifications:

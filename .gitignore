@@ -19,6 +19,8 @@ Thumbs.db
 *.sw?
 *.vi
 
+es
 node_modules
 coverage
 lib
+packages/elodin/README.md

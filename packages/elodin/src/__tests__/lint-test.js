@@ -1,14 +1,13 @@
 import sinon from 'sinon'
 
-import createLinter from '../createLinter'
+import lint from '../index'
 
 describe('Linting styles', () => {
   it('should execute every plugin', () => {
     const plugin = sinon.spy()
     const anotherPlugin = sinon.spy()
 
-    const lint = createLinter({ plugins: [plugin, anotherPlugin] })
-    lint({ color: 'red' })
+    lint({ color: 'red' }, { plugins: [plugin, anotherPlugin] })
 
     expect(plugin.calledOnce).toBe(true)
     expect(anotherPlugin.calledOnce).toBe(true)
@@ -21,11 +20,13 @@ describe('Linting styles', () => {
       }
     }
 
-    const lint = createLinter({ plugins: [plugin] })
-    const warnings = lint({
-      color: 'red',
-      foo: true
-    })
+    const warnings = lint(
+      {
+        color: 'red',
+        foo: true
+      },
+      { plugins: [plugin] }
+    )
 
     expect(warnings.length).toBe(1)
     expect(warnings[0]).toEqual({ description: 'foobar' })

@@ -1,0 +1,30 @@
+{
+  "name": "elodin-plugin-unit-value",
+  "version": "1.0.0",
+  "description": "Elodin plugin for unit values",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib/**",
+    "es/**"
+  ],
+  "repository": "https://github.com/rofrischmann/elodin",
+  "keywords": [
+    "react",
+    "react styling",
+    "inline styles",
+    "linter",
+    "cssinjs",
+    "style linting",
+    "elodin-plugin"
+  ],
+  "author": "Robin Frischmann",
+  "license": "MIT",
+  "dependencies": {
+    "bredon": "^2.0.0",
+    "bredon-types": "^2.0.1"
+  }
+}

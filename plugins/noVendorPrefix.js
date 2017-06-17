@@ -9,18 +9,36 @@ import objectEach from '../utils/objectEach'
 
 import type PluginInterface from '../../types/PluginInterface'
 
-export function noVendorPrefix({ style, addWarning }: PluginInterface): void {
+export default function noVendorPrefix({
+  style,
+  addWarning,
+  autoFix
+}: PluginInterface): void {
   objectEach(style, (value, property) => {
     const camelCasedProperty = camelCaseProperty(property)
 
-    let newProperty = property
-    const newValue = value
+    if (typeof value === 'string' && isPrefixedValue(value)) {
+      const unprefixedValue = unprefixValue(value)
+
+      if (autoFix) {
+        style[property] = unprefixValue
+      } else {
+        addWarning({
+          type: 'NO_VENDOR_PREFIX',
+          hint: `The value "${value}" shoul not be vendor prefixes. Use "${unprefixedValue}" instead.`,
+          suggestion: unprefixedValue,
+          property,
+          value
+        })
+      }
+    }
 
     if (isPrefixedProperty(camelCasedProperty)) {
       const unprefixedProperty = unprefixProperty(camelCasedProperty)
 
       if (autoFix) {
-        newProperty = unprefixedProperty
+        style[unprefixedProperty] = style[property]
+        delete style[property]
       } else {
         addWarning({
           type: 'NO_VENDOR_PREFIX',
@@ -30,18 +48,6 @@ export function noVendorPrefix({ style, addWarning }: PluginInterface): void {
           value
         })
       }
-    }
-
-    if (typeof value === 'string' && isPrefixedValue(value)) {
-      const unprefixedValue = unprefixValue(value)
-
-      addWarning({
-        type: 'NO_VENDOR_PREFIX',
-        hint: `The value "${value}" shoul not be vendor prefixes. Use "${unprefixedValue}" instead.`,
-        suggestion: unprefixedValue,
-        property,
-        value
-      })
     }
   })
 }
