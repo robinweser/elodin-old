@@ -19,9 +19,29 @@ export const longhandMap = {
     'backgroundRepeat',
     'backgroundSize'
   ],
-  /* backgroundPosition: ['backgroundPositionX', 'backgroundPositionY'],
-  backgroundRepeat: ['backgroundRepeatX', 'backgroundRepeatY'], */
-  border: ['borderWidth', 'borderStyle', 'borderColor'],
+  border: ['borderColor', 'borderStyle', 'borderWidth'],
+  borderTop: ['borderTopColor', 'borderTopStyle', 'borderTopWidth'],
+  borderRight: ['borderRightColor', 'borderRightStyle', 'borderRightWidth'],
+  borderBottom: ['borderBottomColor', 'borderBottomStyle', 'borderBottomWidth'],
+  borderLeft: ['borderLeftColor', 'borderLeftStyle', 'borderLeftWidth'],
+  borderWidth: [
+    'borderTopWidth',
+    'borderRightWidth',
+    'borderBottomWidth',
+    'borderLeftWidth'
+  ],
+  borderStyle: [
+    'borderTopStyle',
+    'borderRightStyle',
+    'borderBottomStyle',
+    'borderLeftStyle'
+  ],
+  borderColor: [
+    'borderTopColor',
+    'borderRightColor',
+    'borderBottomColor',
+    'borderLeftColor'
+  ],
   borderImage: [
     'borderImageOutset',
     'borderImageRepeat',
@@ -29,41 +49,17 @@ export const longhandMap = {
     'borderImageSource',
     'borderImageWidth'
   ],
-  /**
-    borderBottom: ['borderBottomWidth', 'borderBottomStyle', 'borderBottomColor'],
-    borderColor: [
-    'borderTopColor',
-    'borderRightColor',
-    'borderBottomColor',
-    'borderLeftColor'
-  ],
-
-  borderLeft: ['borderLeftWidth', 'borderLeftStyle', 'borderLeftColor'],
   borderRadius: [
     'borderTopLeftRadius',
     'borderTopRightRadius',
     'borderBottomRightRadius',
     'borderBottomLeftRadius'
   ],
-  borderRight: ['borderRightWidth', 'borderRightStyle', 'borderRightColor'],
-  borderStyle: [
-    'borderTopStyle',
-    'borderRightStyle',
-    'borderBottomStyle',
-    'borderLeftStyle'
-  ],
-  borderTop: ['borderTopWidth', 'borderTopStyle', 'borderTopColor'],
-  borderWidth: [
-    'borderTopWidth',
-    'borderRightWidth',
-    'borderBottomWidth',
-    'borderLeftWidth'
-  ],**/
   columnRule: ['columnRuleWidth', 'columnRuleStyle', 'columnRuleColor'],
   columns: ['columnWidth', 'columnCount'],
   margin: ['marginTop', 'marginRight', 'marginBottom', 'marginLeft'],
   outline: ['outlineWidth', 'outlineStyle', 'outlineColor'],
-  padding: ['paddingBottom', 'paddingLeft', 'paddingRight', 'paddingTop'],
+  padding: ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft'],
   perspectiveOrigin: ['perspectiveOriginX', 'perspectiveOriginY'],
   textDecoration: [
     'textDecorationColor',

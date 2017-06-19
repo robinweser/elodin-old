@@ -1,12 +1,12 @@
 /* @flow */
-import { longhandMap, shorthands } from './data'
+import { longhandMap, shorthands } from './data/shorthandLonghand'
 
 export type Usage = {
   longhandProps: { [shorthand: string]: Array<string> },
   shorthandProps: Array<string>
 }
 
-export default function analyze(style: Object): Usage {
+export default function extractShorthandLonghand(style: Object): Usage {
   const longhandProps = {}
   const shorthandProps = []
 

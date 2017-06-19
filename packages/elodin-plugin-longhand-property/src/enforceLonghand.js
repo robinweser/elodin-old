@@ -1,14 +1,13 @@
 /* @flow */
-import analyze from '../utils/analyze'
-import { longhandMap } from '../utils/data'
+import { extractShorthandLonghand, longhandMap } from 'elodin-utils'
 
-import type { PluginInterface } from '../../../../types/PluginInterface'
+import type { PluginInterface } from '../../../types/PluginInterface'
 
-export default function enforceShorthand(
+export default function enforceLonghand(
   { style, fix, addWarning }: PluginInterface,
-  allowSingle: boolean
+  { allowSingle = false }: Object = {}
 ) {
-  const { shorthandProps, longhandProps } = analyze(style)
+  const { shorthandProps, longhandProps } = extractShorthandLonghand(style)
 
   shorthandProps.forEach(shorthand => {
     if (longhandProps[shorthand]) {

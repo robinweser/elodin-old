@@ -1,7 +1,7 @@
 {
-  "name": "elodin-plugin-shorthand-longhand",
+  "name": "elodin-plugin-number-value",
   "version": "1.0.0",
-  "description": "Elodin plugin for shorthand-longhand properties",
+  "description": "Elodin plugin for number values",
   "main": "lib/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
@@ -24,6 +24,8 @@
   "author": "Robin Frischmann",
   "license": "MIT",
   "dependencies": {
-    "css-in-js-utils": "^1.0.3"
+    "bredon": "^2.0.0",
+    "bredon-types": "^2.0.1",
+    "elodin-utils": "^0.1.1"
   }
 }

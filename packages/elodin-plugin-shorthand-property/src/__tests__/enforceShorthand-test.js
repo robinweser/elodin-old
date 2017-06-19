@@ -15,8 +15,8 @@ describe('Enforcing shorthand properties', () => {
 
     enforceShorthand(
       pluginInterface({
-        borderColor: 'red',
-        borderStyle: 'solid'
+        paddingLeft: '2px',
+        paddingTop: '4px'
       })
     )
 
@@ -24,9 +24,9 @@ describe('Enforcing shorthand properties', () => {
     expect(warnings[0]).toEqual({
       type: 'SHORTHAND_LONGHAND',
       description:
-        'Do not use the longhand properties "borderColor, borderStyle". Use the shorthand property "border".',
-      longhands: ['borderColor', 'borderStyle'],
-      shorthand: 'border'
+        'Do not use the longhand properties "paddingLeft, paddingTop". Use the shorthand property "padding".',
+      longhands: ['paddingLeft', 'paddingTop'],
+      shorthand: 'padding'
     })
   })
 
@@ -36,19 +36,19 @@ describe('Enforcing shorthand properties', () => {
 
     enforceShorthand(
       pluginInterface({
-        borderColor: 'red',
-        borderStyle: 'solid'
+        paddingLeft: '2px',
+        paddingTop: '4px'
       }),
-      true
+      { allowSingle: true }
     )
 
     expect(warnings.length).toBe(1)
     expect(warnings[0]).toEqual({
       type: 'SHORTHAND_LONGHAND',
       description:
-        'Do not use the longhand properties "borderColor, borderStyle". Use the shorthand property "border".',
-      longhands: ['borderColor', 'borderStyle'],
-      shorthand: 'border'
+        'Do not use the longhand properties "paddingLeft, paddingTop". Use the shorthand property "padding".',
+      longhands: ['paddingLeft', 'paddingTop'],
+      shorthand: 'padding'
     })
   })
 
@@ -58,9 +58,9 @@ describe('Enforcing shorthand properties', () => {
 
     enforceShorthand(
       pluginInterface({
-        borderColor: 'red'
+        paddingLeft: '2px'
       }),
-      true
+      { allowSingle: true }
     )
 
     expect(warnings.length).toBe(0)
@@ -72,9 +72,9 @@ describe('Enforcing shorthand properties', () => {
 
     enforceShorthand(
       pluginInterface({
-        borderColor: 'red',
-        borderStyle: 'solid',
-        border: '1px solid grey'
+        paddingLeft: '2px',
+        paddingTop: '4px',
+        padding: '4px 2px'
       })
     )
 
@@ -82,9 +82,9 @@ describe('Enforcing shorthand properties', () => {
     expect(warnings[0]).toEqual({
       type: 'SHORTHAND_LONGHAND',
       description:
-        'Do not mix the shorthand property "border" with its longhand properties "borderColor, borderStyle". Use the single shorthand property "border".',
-      longhands: ['borderColor', 'borderStyle'],
-      shorthand: 'border'
+        'Do not mix the shorthand property "padding" with its longhand properties "paddingLeft, paddingTop". Use the single shorthand property "padding".',
+      longhands: ['paddingLeft', 'paddingTop'],
+      shorthand: 'padding'
     })
   })
 })
