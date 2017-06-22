@@ -24,8 +24,8 @@
   "author": "Robin Frischmann",
   "license": "MIT",
   "dependencies": {
-    "bredon": "^2.0.0",
-    "bredon-types": "^2.0.1",
+    "bredon": "^2.0.2",
+    "bredon-types": "^2.0.4",
     "elodin-utils": "^0.1.1"
   }
 }
