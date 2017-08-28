@@ -6,11 +6,8 @@ import isUnitlessProperty from 'css-in-js-utils/lib/isUnitlessProperty'
 import type { PluginInterface } from '../../../types/PluginInterface'
 
 type Options = {
-  enforceNumberForPx?: boolean,
-  enforceUnit?: {
-    unitsPerProperty?: { [property: string]: Array<string> },
-    units: Array<string>
-  }
+  unitsPerProperty?: { [property: string]: Array<string> },
+  units: Array<string>
 }
 
 function isSingleValue(ast) {
@@ -24,7 +21,7 @@ function getAllowedUnitsForProperty(property, enforceUnit) {
 
 function runRules(
   { style, addWarning }: PluginInterface,
-  { enforceUnit, enforceNumberForPx }: Options
+  { units = ['px'], unitPerProperty = {} }: Options
 ) {
   for (const property in style) {
     const value = style[property]
@@ -92,6 +89,6 @@ function runRules(
   }
 }
 
-export default function unit(options: Object): Function {
+export default function unit(options: Object = {}): Function {
   return (pluginInterface: Object) => runRules(pluginInterface, options)
 }
