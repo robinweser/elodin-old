@@ -1,29 +1,29 @@
 {
-  "name": "elodin-utils",
-  "version": "0.1.1",
-  "description": "Elodin utilities for internal use",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "jsnext:main": "es/index.js",
-  "files": [
-    "LICENSE",
-    "README.md",
-    "lib/**",
-    "es/**"
-  ],
-  "repository": "https://github.com/rofrischmann/elodin",
-  "keywords": [
-    "react",
-    "react styling",
-    "inline styles",
-    "linter",
-    "cssinjs",
-    "style linting"
-  ],
-  "author": "Robin Frischmann",
-  "license": "MIT",
-  "dependencies": {
-    "bredon": "^2.0.0",
-    "bredon-types": "^2.0.2"
-  }
+    "name": "elodin-utils",
+    "version": "1.0.0",
+    "description": "Elodin utilities for internal use",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "jsnext:main": "es/index.js",
+    "files": [
+        "LICENSE",
+        "README.md",
+        "lib/**",
+        "es/**"
+    ],
+    "repository": "https://github.com/rofrischmann/elodin",
+    "keywords": [
+        "react",
+        "react styling",
+        "inline styles",
+        "linter",
+        "cssinjs",
+        "style linting"
+    ],
+    "author": "Robin Frischmann",
+    "license": "MIT",
+    "dependencies": {
+        "bredon": "^2.0.0",
+        "bredon-types": "^2.0.2"
+    }
 }

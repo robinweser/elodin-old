@@ -1,7 +1,7 @@
 {
-    "name": "elodin-plugin-unit-value",
+    "name": "elodin-data",
     "version": "1.0.0",
-    "description": "Elodin plugin for unit values",
+    "description": "Elodin data provider",
     "main": "lib/index.js",
     "module": "es/index.js",
     "jsnext:main": "es/index.js",
@@ -18,14 +18,11 @@
         "inline styles",
         "linter",
         "cssinjs",
-        "style linting",
-        "elodin-plugin"
+        "style linting"
     ],
     "author": "Robin Frischmann",
     "license": "MIT",
-    "dependencies": {
-        "bredon": "^2.0.2",
-        "bredon-types": "^2.0.4",
-        "css-in-js-utils": "^1.0.3"
+    "devDependencies": {
+        "caniuse-api": "^2.0.0"
     }
 }

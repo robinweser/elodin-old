@@ -6,6 +6,8 @@ import {
   isDimension,
   isFunction,
   isInteger,
+  isString,
+  isFloat,
   isIdentifier
 } from 'bredon-types'
 
@@ -13,24 +15,19 @@ import valueKeywords from './data/valueKeywords'
 import arrayReduce from './arrayReduce'
 
 function isLength(node) {
-  return (
-    isDimension(node) ||
-    (isFunction(node) && node.callee.value.indexOf('calc') !== -1)
-  )
+  return isDimension(node) || (isFunction(node) && node.callee.value.indexOf('calc') !== -1)
 }
 
 function isColor(node) {
   return (
     isHexColor(node) ||
     (isFunction(node) && node.callee.value.match(/^(rgba?|hsla?)$/) !== null) ||
-    isIdentifierAndMatchKeyword(node, 'color')
+    isIdentifierAndMatchesKeyword(node, 'color')
   )
 }
 
-function isIdentifierAndMatchKeyword(node, property) {
-  return (
-    isIdentifier(node) && valueKeywords[property].indexOf(node.value) !== -1
-  )
+function isIdentifierAndMatchesKeyword(node, property) {
+  return isIdentifier(node) && valueKeywords[property].indexOf(node.value) !== -1
 }
 
 const circularPattern = [[0, 0, 0, 0], [0, 1, 0, 1], [0, 1, 2, 1], [0, 1, 2, 3]]
@@ -56,30 +53,15 @@ const patternMap = {
   },
   borderWidth: {
     pattern: circularPattern,
-    values: [
-      'borderTopWidth',
-      'borderRightWidth',
-      'borderBottomWidth',
-      'borderLeftWidth'
-    ]
+    values: ['borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth']
   },
   borderStyle: {
     pattern: circularPattern,
-    values: [
-      'borderTopStyle',
-      'borderRightStyle',
-      'borderBottomStyle',
-      'borderLeftStyle'
-    ]
+    values: ['borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle']
   },
   borderColor: {
     pattern: circularPattern,
-    values: [
-      'borderTopStyle',
-      'borderRightStyle',
-      'borderBottomStyle',
-      'borderLeftStyle'
-    ]
+    values: ['borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle']
   },
   perspectiveOrigin: {
     pattern: axesPattern,
@@ -90,41 +72,37 @@ const patternMap = {
 const typeMap = {
   border: {
     borderWidth: isLength,
-    borderStyle: node => isIdentifierAndMatchKeyword(node, 'borderStyle'),
+    borderStyle: node => isIdentifierAndMatchesKeyword(node, 'borderStyle'),
     borderColor: isColor
   },
   borderTop: {
     borderTopWidth: isLength,
-    borderTopStyle: node => isIdentifierAndMatchKeyword(node, 'borderTopStyle'),
+    borderTopStyle: node => isIdentifierAndMatchesKeyword(node, 'borderTopStyle'),
     borderTopColor: isColor
   },
   borderRight: {
     borderRightWidth: isLength,
-    borderRightStyle: node =>
-      isIdentifierAndMatchKeyword(node, 'borderRightStyle'),
+    borderRightStyle: node => isIdentifierAndMatchesKeyword(node, 'borderRightStyle'),
     borderRightColor: isColor
   },
   borderBottom: {
     borderBottomWidth: isLength,
-    borderBottomStyle: node =>
-      isIdentifierAndMatchKeyword(node, 'borderBottomStyle'),
+    borderBottomStyle: node => isIdentifierAndMatchesKeyword(node, 'borderBottomStyle'),
     borderBottomColor: isColor
   },
   borderLeft: {
     borderLeftWidth: isLength,
-    borderLeftStyle: node =>
-      isIdentifierAndMatchKeyword(node, 'borderLeftStyle'),
+    borderLeftStyle: node => isIdentifierAndMatchesKeyword(node, 'borderLeftStyle'),
     borderLeftColor: isColor
   },
   outline: {
     outlineWidth: isLength,
-    outlineStyle: node => isIdentifierAndMatchKeyword(node, 'outlineStyle'),
+    outlineStyle: node => isIdentifierAndMatchesKeyword(node, 'outlineStyle'),
     outlineColor: isColor
   },
   columnRule: {
     columnRuleWidth: isLength,
-    columnRuleStyle: node =>
-      isIdentifierAndMatchKeyword(node, 'columnRuleStyle'),
+    columnRuleStyle: node => isIdentifierAndMatchesKeyword(node, 'columnRuleStyle'),
     columnRuleColor: isColor
   },
   columns: {
@@ -132,43 +110,46 @@ const typeMap = {
     columnCount: isInteger
   },
   textDecoration: {
-    textDecorationLine: node =>
-      isIdentifierAndMatchKeyword(node, 'textDecorationLine'),
-    textDecorationStyle: node =>
-      isIdentifierAndMatchKeyword(node, 'textDecorationStyle'),
+    textDecorationLine: node => isIdentifierAndMatchesKeyword(node, 'textDecorationLine'),
+    textDecorationStyle: node => isIdentifierAndMatchesKeyword(node, 'textDecorationStyle'),
     textDecorationColor: isColor
   },
   animation: {
     animationDuration: isDimension,
     animationDelay: isDimension,
     animationTimingFunction: node =>
-      isIdentifierAndMatchKeyword(node, 'animationTimingFunction') ||
-      isFunction(node),
+      isIdentifierAndMatchesKeyword(node, 'animationTimingFunction') || isFunction(node),
     animationIterationCount: node =>
-      isIdentifierAndMatchKeyword(node, 'animationIterationCount') ||
-      isInteger(node),
-    animationDirection: node =>
-      isIdentifierAndMatchKeyword(node, 'animationDirection'),
-    animationFillMode: node =>
-      isIdentifierAndMatchKeyword(node, 'animationFillMode'),
-    animationPlayState: node =>
-      isIdentifierAndMatchKeyword(node, 'animationPlayState'),
+      isIdentifierAndMatchesKeyword(node, 'animationIterationCount') || isInteger(node),
+    animationDirection: node => isIdentifierAndMatchesKeyword(node, 'animationDirection'),
+    animationFillMode: node => isIdentifierAndMatchesKeyword(node, 'animationFillMode'),
+    animationPlayState: node => isIdentifierAndMatchesKeyword(node, 'animationPlayState'),
     animationName: isIdentifier
+  },
+  font: {
+    fontStyle: node => isIdentifierAndMatchesKeyword(node, 'fontStyle'),
+    fontVariant: node => isIdentifierAndMatchesKeyword(node, 'fontVariant'),
+    fontWeight: node => isIdentifierAndMatchesKeyword(node, 'fontWeight'),
+    fontSize: node => isIdentifierAndMatchesKeyword(node, 'fontSize') || isLength(node),
+    lineHeight: node =>
+      isIdentifierAndMatchesKeyword(node, 'lineHeight') ||
+      isLength(node) ||
+      isFloat(node) ||
+      isInteger(node),
+    fontFamily: node =>
+      isIdentifierAndMatchesKeyword(node, 'fontFamily') || isString(node) || isIdentifier(node)
   }
 }
 
 /* TODO:
-  background, transition
+  background, transition, font
 */
 
-export default function parseShorthand(
-  property: string,
-  value: string
-): ?Object {
+export default function parseShorthand(property: string, value: string): ?Object {
   const ast = parse(value)
 
   // ensure we're using single values
-  if (isCSSValue) {
+  if (isCSSValue(ast)) {
     const valueCount = ast.body.length
 
     if (patternMap[property]) {
@@ -178,9 +159,7 @@ export default function parseShorthand(
       return arrayReduce(
         values,
         (longhands, longhandProperty, index) => {
-          longhands[longhandProperty] = generate(
-            ast.body[matchingPattern[index]]
-          )
+          longhands[longhandProperty] = generate(ast.body[matchingPattern[index]])
           return longhands
         },
         {}

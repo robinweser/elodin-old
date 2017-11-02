@@ -97,5 +97,33 @@ describe('Parsing shorthand values', () => {
       animationDelay: '1s',
       animationName: 'slidein'
     })
+
+    expect(
+      parseShorthand('font', 'italic small-caps normal 13px/150% Arial')
+    ).toEqual({
+      fontStyle: 'italic',
+      fontVariant: 'small-caps',
+      fontWeight: 'normal',
+      fontSize: '13px',
+      lineHeight: '150%',
+      fontFamily: 'Arial'
+    })
+
+    expect(parseShorthand('font', 'Arial 13px')).toEqual({
+      fontSize: '13px',
+      fontFamily: 'Arial'
+    })
+
+    expect(
+      parseShorthand(
+        'font',
+        '15px italic small-caps "Helvetica Neue", Arial, sans-serif'
+      )
+    ).toEqual({
+      fontStyle: 'italic',
+      fontVariant: 'small-caps',
+      fontSize: '15px',
+      fontFamily: '"Helvetica Neue", Arial, sans-serif'
+    })
   })
 })
