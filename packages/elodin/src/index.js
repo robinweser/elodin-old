@@ -8,10 +8,8 @@ type ConfigType = {
   plugins: Array<Function>,
   fix?: boolean
 }
-export default function lint(
-  style: Object,
-  { plugins, fix = false }: ConfigType
-): Array<Warning> {
+
+export default function lint(style: Object, { plugins, fix = false }: ConfigType): Array<Warning> {
   return arrayReduce(
     plugins,
     (warnings, plugin) => {

@@ -1,7 +1,7 @@
 {
-    "name": "elodin-utils",
+    "name": "elodin-data",
     "version": "1.0.0",
-    "description": "Elodin utilities for internal use",
+    "description": "Elodin data provider",
     "main": "lib/index.js",
     "module": "es/index.js",
     "jsnext:main": "es/index.js",
@@ -22,9 +22,7 @@
     ],
     "author": "Robin Frischmann",
     "license": "MIT",
-    "dependencies": {
-        "bredon": "^2.0.0",
-        "bredon-types": "^2.0.2",
-        "elodin-data": "^1.0.0"
+    "devDependencies": {
+        "caniuse-api": "^2.0.0"
     }
 }

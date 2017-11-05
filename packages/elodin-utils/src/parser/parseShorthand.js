@@ -1,19 +1,20 @@
 /* @flow */
 import { parse, generate } from 'bredon'
 import {
+  isMultiValue,
   isCSSValue,
-  isHexColor,
   isDimension,
   isFunction,
   isInteger,
+  isString,
+  isFloat,
   isIdentifier
 } from 'bredon-types'
+import { propertyShorthands } from 'elodin-data'
 
 import { isColor, isKeyword, isLength } from '../validators/types'
 
 import arrayReduce from '../arrayReduce'
-
-import propertyShorthands from '../data/propertyShorthands'
 
 const circularPattern = [[0, 0, 0, 0], [0, 1, 0, 1], [0, 1, 2, 1], [0, 1, 2, 3]]
 const axesPattern = [[0, 0], [0, 1]]
@@ -105,6 +106,19 @@ const typeMap = {
     animationFillMode: isKeyword('animationFillMode'),
     animationPlayState: isKeyword('animationPlayState'),
     animationName: isIdentifier
+  },
+  font: {
+    fontStyle: isKeyword('fontStyle'),
+    fontVariant: isKeyword('fontVariant'),
+    fontWeight: isKeyword('fontWeight'),
+    fontSize: node => isKeyword('fontSize')(node) || isLength(node),
+    lineHeight: node =>
+      isKeyword('lineHeight')(node) ||
+      isLength(node) ||
+      isFloat(node) ||
+      isInteger(node),
+    fontFamily: node =>
+      isKeyword('fontFamily')(node) || isString(node) || isIdentifier(node)
   }
 }
 
@@ -117,6 +131,10 @@ export default function parseShorthand(
 ): ?Object {
   const ast = parse(value)
 
+  if (isMultiValue(ast)) {
+    // TODO: parse multi values as well
+    return {}
+  }
   // ensure we're using single values
   if (isCSSValue(ast)) {
     const valueCount = ast.body.length
@@ -142,11 +160,11 @@ export default function parseShorthand(
 
       return arrayReduce(
         ast.body,
-        (longhands, value) => {
+        (longhands, node) => {
           let longhandProperty
 
           for (const longhand in types) {
-            if (types[longhand](value)) {
+            if (types[longhand](node)) {
               longhandProperty = longhand
               delete types[longhand]
               break
@@ -154,7 +172,7 @@ export default function parseShorthand(
           }
 
           if (longhandProperty) {
-            longhands[longhandProperty] = generate(value)
+            longhands[longhandProperty] = generate(node)
           }
 
           return longhands
@@ -163,4 +181,7 @@ export default function parseShorthand(
       )
     }
   }
+
+  // TODO: error?
+  return {}
 }

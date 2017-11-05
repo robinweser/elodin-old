@@ -1,7 +1,7 @@
 /* @flow */
+import { propertyShorthands, valueInitials } from 'elodin-data'
+
 import arrayReduce from '../arrayReduce'
-import propertyShorthands from '../data/propertyShorthands'
-import valueInitials from '../data/valueInitials'
 
 const circularPattern = [
   { length: 4, matching: [1, 3] },
@@ -12,9 +12,9 @@ const circularPattern = [
 export default function parseCircularLonghand(
   property: string,
   longhands: Object
-) {
+): string {
   if (propertyShorthands[property]) {
-    let values = arrayReduce(
+    const values = arrayReduce(
       propertyShorthands[property],
       (shorthand, longhand) => {
         // if longhand value is provided
@@ -40,4 +40,7 @@ export default function parseCircularLonghand(
 
     return values.join(' ')
   }
+
+  // TODO: error?
+  return ''
 }

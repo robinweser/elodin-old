@@ -1,12 +1,10 @@
 import enforceShorthand from '../enforceShorthand'
 
-const mockPluginInterface = warnings => {
-  return (style, fix) => ({
-    style,
-    addWarning: warning => warnings.push(warning),
-    fix: fix || false
-  })
-}
+const mockPluginInterface = warnings => (style, fix) => ({
+  style,
+  addWarning: warning => warnings.push(warning),
+  fix: fix || false
+})
 
 describe('Enforcing shorthand properties', () => {
   it('should warn if longhand properties are used', () => {

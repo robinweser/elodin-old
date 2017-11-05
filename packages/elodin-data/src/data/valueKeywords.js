@@ -1,14 +1,7 @@
 import colorNames from './colorNames'
 
 export default {
-  alignContent: [
-    'center',
-    'flex-end',
-    'flex-start',
-    'space-around',
-    'space-between',
-    'stretch'
-  ],
+  alignContent: ['center', 'flex-end', 'flex-start', 'space-around', 'space-between', 'stretch'],
   alignSelf: ['baseline', 'center', 'flex-end', 'flex-start', 'stretch'],
   alignItems: ['baseline', 'center', 'flex-end', 'flex-start', 'stretch'],
   alignmentBaseline: [
@@ -270,18 +263,11 @@ export default {
   enableBackground: ['accumulate'],
   fillRule: ['evenodd', 'nonzero'],
   flex: ['auto'],
-  flexBasis: [
-    'auto',
-    'content',
-    'fill',
-    'fit-content',
-    'max-content',
-    'min-content'
-  ],
+  flexBasis: ['auto', 'content', 'fill', 'fit-content', 'max-content', 'min-content'],
   flexDirection: ['column', 'column-reverse', 'row', 'row-reverse'],
   flexWrap: ['nowrap', 'wrap', 'wrap-reverse'],
   float: ['left', 'right', 'none'],
-  fontFamily: ['cursive', 'fantasy', 'monospace', 'sans-serif', 'serif'],
+  fontFamily: ['cursive', 'fantasy', 'monospace', 'sans-serif', 'serif', 'system-ui'],
   fontSize: [
     'large',
     'larger',
@@ -321,34 +307,14 @@ export default {
   fontVariantLigatures: ['normal'],
   fontVariantEastAsian: ['normal'],
   fontVariantPosition: ['normal', 'sub', 'super'],
-  fontWeight: [
-    100,
-    200,
-    300,
-    400,
-    500,
-    600,
-    700,
-    800,
-    900,
-    'bold',
-    'bolder',
-    'lighter',
-    'normal'
-  ],
+  fontWeight: [100, 200, 300, 400, 500, 600, 700, 800, 900, 'bold', 'bolder', 'lighter', 'normal'],
   glyphOrientationHorizontal: ['0deg', '90deg', '180deg', '270deg'],
   glyphOrientationVertical: ['auto', '0deg', '90deg', '180deg', '270deg'],
   hangingPunctuation: ['allow-end', 'first', 'force-end', 'last', 'none'],
   height: ['auto', 'available', 'fit-content', 'max-content', 'min-content'],
   imageRendering: ['auto', 'crisp-edges', 'pixelated'],
   isolation: ['auto', 'isolate'],
-  justifyContent: [
-    'center',
-    'flex-end',
-    'flex-start',
-    'space-around',
-    'space-between'
-  ],
+  justifyContent: ['center', 'flex-end', 'flex-start', 'space-around', 'space-between'],
   justifyItems: ['auto', 'stretch'],
   justifySelf: ['auto', 'stretch'],
   kerning: ['auto', 'none', 'normal'],
@@ -422,34 +388,10 @@ export default {
   marginTop: ['auto'],
   mask: ['none'],
   maskType: ['alpha', 'luminance'],
-  maxHeight: [
-    'fill-available',
-    'fit-content',
-    'max-content',
-    'min-content',
-    'none'
-  ],
-  maxWidth: [
-    'fill-available',
-    'fit-content',
-    'max-content',
-    'min-content',
-    'none'
-  ],
-  minHeight: [
-    'fill-available',
-    'fit-content',
-    'max-content',
-    'min-content',
-    'none'
-  ],
-  minWidth: [
-    'fill-available',
-    'fit-content',
-    'max-content',
-    'min-content',
-    'none'
-  ],
+  maxHeight: ['fill-available', 'fit-content', 'max-content', 'min-content', 'none'],
+  maxWidth: ['fill-available', 'fit-content', 'max-content', 'min-content', 'none'],
+  minHeight: ['fill-available', 'fit-content', 'max-content', 'min-content', 'none'],
+  minWidth: ['fill-available', 'fit-content', 'max-content', 'min-content', 'none'],
   mixBlendMode: [
     'color',
     'color-burn',
@@ -515,36 +457,14 @@ export default {
   strokeLinecap: ['butt', 'round', 'square'],
   strokeLinejoin: ['bevel', 'miter', 'round'],
   tableLayout: ['auto', 'fixed'],
-  textAlign: [
-    'center',
-    'end',
-    'justify',
-    'justify-all',
-    'left',
-    'match-parent',
-    'right',
-    'start'
-  ],
+  textAlign: ['center', 'end', 'justify', 'justify-all', 'left', 'match-parent', 'right', 'start'],
   textAnchor: ['end', 'middle', 'start'],
   textDecorationLine: ['line-through', 'none', 'overline', 'underline'],
   textDecorationStyle: ['solid', 'double', 'dotted', 'dashed', 'wavy'],
   textOverflow: ['clip', 'ellipsis'],
-  textRendering: [
-    'auto',
-    'geometricPrecision',
-    'optimizeLegibility',
-    'optimizeSpeed'
-  ],
+  textRendering: ['auto', 'geometricPrecision', 'optimizeLegibility', 'optimizeSpeed'],
   textTransform: ['capitalize', 'full-width', 'lowercase', 'none', 'uppercase'],
-  textUnderlinePosition: [
-    'above',
-    'auto',
-    'auto-pos',
-    'below',
-    'left',
-    'right',
-    'under'
-  ],
+  textUnderlinePosition: ['above', 'auto', 'auto-pos', 'below', 'left', 'right', 'under'],
   top: ['auto'],
   transformOrigin: ['bottom', 'center', 'left', 'right', 'top'],
   transformOriginX: ['center', 'left', 'right'],
@@ -560,24 +480,8 @@ export default {
     'step-end',
     'step-start'
   ],
-  unicodeBidi: [
-    'bidi-override',
-    'embed',
-    'isolate',
-    'isolate-override',
-    'normal',
-    'plaintext'
-  ],
-  verticalAlign: [
-    'baseline',
-    'bottom',
-    'middle',
-    'sub',
-    'super',
-    'text-bottom',
-    'text-top',
-    'top'
-  ],
+  unicodeBidi: ['bidi-override', 'embed', 'isolate', 'isolate-override', 'normal', 'plaintext'],
+  verticalAlign: ['baseline', 'bottom', 'middle', 'sub', 'super', 'text-bottom', 'text-top', 'top'],
   visibility: ['collapse', 'hidden', 'visible'],
   whiteSpace: ['normal', 'nowrap', 'pre', 'pre-line', 'pre-wrap'],
   width: ['auto', 'available', 'fit-content', 'max-content', 'min-content'],

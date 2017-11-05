@@ -1,28 +1,28 @@
 {
-  "name": "elodin",
-  "version": "0.1.1",
-  "description": "Linting tools for JavaScript style objects",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "jsnext:main": "es/index.js",
-  "files": [
-    "LICENSE",
-    "README.md",
-    "lib/**",
-    "es/**"
-  ],
-  "repository": "https://github.com/rofrischmann/elodin",
-  "keywords": [
-    "react",
-    "react styling",
-    "inline styles",
-    "linter",
-    "cssinjs",
-    "style linting"
-  ],
-  "author": "Robin Frischmann",
-  "license": "MIT",
-  "dependencies": {
-    "bredon": "^1.0.1"
-  }
+    "name": "elodin",
+    "version": "1.0.0",
+    "description": "Quality and Optimisation tools for CSS in JavaScript solutions",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "jsnext:main": "es/index.js",
+    "files": [
+        "LICENSE",
+        "README.md",
+        "lib/**",
+        "es/**"
+    ],
+    "repository": "https://github.com/rofrischmann/elodin",
+    "keywords": [
+        "react",
+        "react styling",
+        "inline styles",
+        "linter",
+        "cssinjs",
+        "style linting"
+    ],
+    "author": "Robin Frischmann",
+    "license": "MIT",
+    "dependencies": {
+        "bredon": "^1.0.1"
+    }
 }

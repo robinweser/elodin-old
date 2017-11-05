@@ -1,7 +1,7 @@
 /* @flow */
+import { propertyShorthands } from 'elodin-data'
+
 import arrayReduce from '../arrayReduce'
-import propertyShorthands from '../data/propertyShorthands'
-import valueInitials from '../data/valueInitials'
 
 export default function parseBasicLonghand(
   property: string,
@@ -25,4 +25,7 @@ export default function parseBasicLonghand(
 
     return values.join(' ')
   }
+
+  // TODO: error?
+  return ''
 }

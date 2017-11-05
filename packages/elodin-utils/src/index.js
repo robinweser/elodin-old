@@ -3,9 +3,9 @@ import arrayReduce from './arrayReduce'
 import extractShorthandLonghand from './extractShorthandLonghand'
 import objectEach from './objectEach'
 import objectReduce from './objectReduce'
-import parseShorthand from './parseShorthand'
 
-import { longhandMap } from './data/shorthandLonghand'
+import parseShorthand from './parser/parseShorthand'
+import parseLonghand from './parser/parseLonghand'
 
 export {
   arrayReduce,
@@ -13,5 +13,5 @@ export {
   objectEach,
   objectReduce,
   parseShorthand,
-  longhandMap
+  parseLonghand
 }

@@ -1,12 +1,10 @@
 import unitValue from '../index'
 
-const mockPluginInterface = warnings => {
-  return (style, fix) => ({
-    style,
-    addWarning: warning => warnings.push(warning),
-    fix: fix || false
-  })
-}
+const mockPluginInterface = warnings => (style, fix) => ({
+  style,
+  addWarning: warning => warnings.push(warning),
+  fix: fix || false
+})
 
 describe('Enforcing units', () => {
   it('should warn if wrong units are used', () => {

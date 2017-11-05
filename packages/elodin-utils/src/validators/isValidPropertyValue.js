@@ -3,7 +3,8 @@ import { isMultiValue, isCSSValue } from 'bredon-types'
 
 import isMultiValueProperty from './isMultiValueProperty'
 import isValueSetProperty from './isValueSetProperty'
-import propertyValidators from './propertyValidators'
+
+import arrayReduce from '../arrayReduce'
 
 export default function isValidPropertyValue(
   property: string,
@@ -41,8 +42,11 @@ export default function isValidPropertyValue(
         (isValid, singleValue) => isValid && isValidPropertyValue(singleValue),
         true
       )
-    } else {
-      return validator(ast.body[0])
     }
+
+    return validator(ast.body[0])
   }
+
+  // TODO: true or false?
+  return true
 }

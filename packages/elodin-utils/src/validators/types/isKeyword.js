@@ -1,6 +1,5 @@
 import { isIdentifier } from 'bredon-types'
-
-import valueKeywords from '../../data/valueKeywords'
+import { valueKeywords } from 'elodin-data'
 
 export default function isKeyword(property) {
   return node =>

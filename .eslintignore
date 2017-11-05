@@ -1,2 +1,1 @@
-modules/utils/types/**/*.js
-modules/utils/validation/**/*.js
+packages/elodin-data/**
