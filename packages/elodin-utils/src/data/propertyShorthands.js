@@ -1,4 +1,4 @@
-export const longhandMap = {
+export default {
   animation: [
     'animationName',
     'animationDuration',
@@ -73,5 +73,3 @@ export const longhandMap = {
     'transitionDelay'
   ]
 }
-
-export const shorthands = Object.keys(longhandMap)

@@ -9,29 +9,11 @@ import {
   isIdentifier
 } from 'bredon-types'
 
-import valueKeywords from './data/valueKeywords'
-import arrayReduce from './arrayReduce'
+import { isColor, isKeyword, isLength } from '../validators/types'
 
-function isLength(node) {
-  return (
-    isDimension(node) ||
-    (isFunction(node) && node.callee.value.indexOf('calc') !== -1)
-  )
-}
+import arrayReduce from '../arrayReduce'
 
-function isColor(node) {
-  return (
-    isHexColor(node) ||
-    (isFunction(node) && node.callee.value.match(/^(rgba?|hsla?)$/) !== null) ||
-    isIdentifierAndMatchKeyword(node, 'color')
-  )
-}
-
-function isIdentifierAndMatchKeyword(node, property) {
-  return (
-    isIdentifier(node) && valueKeywords[property].indexOf(node.value) !== -1
-  )
-}
+import propertyShorthands from '../data/propertyShorthands'
 
 const circularPattern = [[0, 0, 0, 0], [0, 1, 0, 1], [0, 1, 2, 1], [0, 1, 2, 3]]
 const axesPattern = [[0, 0], [0, 1]]
@@ -39,92 +21,68 @@ const axesPattern = [[0, 0], [0, 1]]
 const patternMap = {
   padding: {
     pattern: circularPattern,
-    values: ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft']
+    values: propertyShorthands.padding
   },
   margin: {
     pattern: circularPattern,
-    values: ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft']
+    values: propertyShorthands.margin
   },
   borderRadius: {
     pattern: circularPattern,
-    values: [
-      'borderTopLeftRadius',
-      'borderTopRightRadius',
-      'borderBottomRightRadius',
-      'borderBottomLeftRadius'
-    ]
+    values: propertyShorthands.borderRadius
   },
   borderWidth: {
     pattern: circularPattern,
-    values: [
-      'borderTopWidth',
-      'borderRightWidth',
-      'borderBottomWidth',
-      'borderLeftWidth'
-    ]
+    values: propertyShorthands.borderWidth
   },
   borderStyle: {
     pattern: circularPattern,
-    values: [
-      'borderTopStyle',
-      'borderRightStyle',
-      'borderBottomStyle',
-      'borderLeftStyle'
-    ]
+    values: propertyShorthands.borderStyle
   },
   borderColor: {
     pattern: circularPattern,
-    values: [
-      'borderTopStyle',
-      'borderRightStyle',
-      'borderBottomStyle',
-      'borderLeftStyle'
-    ]
+    values: propertyShorthands.borderColor
   },
   perspectiveOrigin: {
     pattern: axesPattern,
-    values: ['perspectiveOriginX', 'perspectiveOriginY']
+    values: propertyShorthands.perspectiveOrigin
   }
 }
 
 const typeMap = {
   border: {
     borderWidth: isLength,
-    borderStyle: node => isIdentifierAndMatchKeyword(node, 'borderStyle'),
+    borderStyle: isKeyword('borderStyle'),
     borderColor: isColor
   },
   borderTop: {
     borderTopWidth: isLength,
-    borderTopStyle: node => isIdentifierAndMatchKeyword(node, 'borderTopStyle'),
+    borderTopStyle: isKeyword('borderTopStyle'),
     borderTopColor: isColor
   },
   borderRight: {
     borderRightWidth: isLength,
-    borderRightStyle: node =>
-      isIdentifierAndMatchKeyword(node, 'borderRightStyle'),
+    borderRightStyle: isKeyword('borderRightStyle'),
     borderRightColor: isColor
   },
   borderBottom: {
     borderBottomWidth: isLength,
-    borderBottomStyle: node =>
-      isIdentifierAndMatchKeyword(node, 'borderBottomStyle'),
+    borderBottomStyle: isKeyword('borderBottomStyle'),
     borderBottomColor: isColor
   },
   borderLeft: {
     borderLeftWidth: isLength,
-    borderLeftStyle: node =>
-      isIdentifierAndMatchKeyword(node, 'borderLeftStyle'),
+    borderLeftStyle: isKeyword('borderLeftStyle'),
     borderLeftColor: isColor
   },
   outline: {
     outlineWidth: isLength,
-    outlineStyle: node => isIdentifierAndMatchKeyword(node, 'outlineStyle'),
+    outlineStyle: isKeyword('outlineStyle'),
     outlineColor: isColor
   },
   columnRule: {
     columnRuleWidth: isLength,
-    columnRuleStyle: node =>
-      isIdentifierAndMatchKeyword(node, 'columnRuleStyle'),
+    columnRuleStyle: isKeyword('columnRuleStyle'),
     columnRuleColor: isColor
   },
   columns: {
@@ -132,27 +90,20 @@ const typeMap = {
     columnCount: isInteger
   },
   textDecoration: {
-    textDecorationLine: node =>
-      isIdentifierAndMatchKeyword(node, 'textDecorationLine'),
-    textDecorationStyle: node =>
-      isIdentifierAndMatchKeyword(node, 'textDecorationStyle'),
+    textDecorationLine: isKeyword('textDecorationLine'),
+    textDecorationStyle: isKeyword('textDecorationStyle'),
     textDecorationColor: isColor
   },
   animation: {
     animationDuration: isDimension,
     animationDelay: isDimension,
     animationTimingFunction: node =>
-      isIdentifierAndMatchKeyword(node, 'animationTimingFunction') ||
-      isFunction(node),
+      isKeyword('animationTimingFunction')(node) || isFunction(node),
     animationIterationCount: node =>
-      isIdentifierAndMatchKeyword(node, 'animationIterationCount') ||
-      isInteger(node),
-    animationDirection: node =>
-      isIdentifierAndMatchKeyword(node, 'animationDirection'),
-    animationFillMode: node =>
-      isIdentifierAndMatchKeyword(node, 'animationFillMode'),
-    animationPlayState: node =>
-      isIdentifierAndMatchKeyword(node, 'animationPlayState'),
+      isKeyword('animationIterationCount')(node) || isInteger(node),
+    animationDirection: isKeyword('animationDirection'),
+    animationFillMode: isKeyword('animationFillMode'),
+    animationPlayState: isKeyword('animationPlayState'),
     animationName: isIdentifier
   }
 }
@@ -160,7 +111,6 @@ const typeMap = {
 /* TODO:
   background, transition
 */
-
 export default function parseShorthand(
   property: string,
   value: string
@@ -168,7 +118,7 @@ export default function parseShorthand(
   const ast = parse(value)
 
   // ensure we're using single values
-  if (isCSSValue) {
+  if (isCSSValue(ast)) {
     const valueCount = ast.body.length
 
     if (patternMap[property]) {

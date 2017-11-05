@@ -26,6 +26,6 @@
   "dependencies": {
     "bredon": "^2.0.2",
     "bredon-types": "^2.0.4",
-    "css-in-js-utils": "^1.0.3",
+    "css-in-js-utils": "^1.0.3"
   }
 }
