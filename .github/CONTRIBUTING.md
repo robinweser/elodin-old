@@ -2,41 +2,67 @@
 Want to get involved? **Awesome!**<br>
 Please read the following guide on how to contribute, create issues and send pull requests.
 
-If you have a feature request please create an issue. Also if you're even improving Elodin by any kind please don't be shy and send a pull request to let everyone benefit.
+If you have a feature request please create an issue. Also if you're even improving Fela by any kind please don't be shy and send a pull request to let everyone benefit.
 
 ## Project setup
-First of all you need to fork the project and clone it locally.
-Afterwards you just need to install all the development dependencies.
-```sh
-git clone --bare https://github.com/rofrischmann/elodin.git
+
+We assume that you got [node](https://nodejs.org) and [yarn](https://yarnpkg.com) in your environment. To get started with the repo:
+
+```
+git clone git@github.com:rofrischmann/elodin.git
 cd elodin
-yarn run bootstrap
-yarn run build
+yarn install
+yarn setup
 ```
 
+**Elodin is a collection of multiple packages**. We use the tool [lerna](https://lernajs.io/) to maintain it. All source code can be found in the folder [/packages](packages).
+
 ## Commands
-To ensure code quality we've build some simple commands to run tests and code linting.
 
-### `yarn run test`
-Will run all tests using [jest](https://facebook.github.io/jest/). It also automatically generates coverage information which can be visually seen at `/coverage/lcov-report/index.html` afterwards.
+Tests:
 
-### `yarn run lint`
-Uses [eslint](http://eslint.org/docs/user-guide/command-line-interface) to do code linting.
+```
+yarn test
+```
 
-### `yarn run flow`
-Uses [Flow](https://flow.org) for type checking and static code analysis.
+Linting:
 
-> You can use `yarn run check` to run all 3 commands above at once.
+```
+yarn lint
+```
+
+Flow:
+
+```
+yarn flow
+```
+
+Formatting:
+
+```
+yarn format
+```
+
+You can also run all four of them at the same time:
+
+```
+yarn check
+```
+
+Note: If your tests use other elodin packages as depedencies, you might need to run `yarn build` (it's a part of `yarn setup`).
+
+## Tip for developing
+
+Fela contains many examples. It can be handy to smoke test your changes as a part of [example-react](http://fela.js.org/docs/introduction/Examples.html).
 
 ## Code Formatting
-We use [prettier](https://github.com/prettier/prettier) for deterministic code-formatting. If you're using [Atom](https://atom.io) we recommend using the [atom-prettier](https://atom.io/packages/prettier-atom) plugin with the **Format on Save** option enabled.
+We use [prettier](https://prettier.io/), an opinionated code formatter. If you're using [Atom](https://atom.io) we recommend [prettier-atom](https://atom.io/packages/prettier-atom) with the **format on save**. If you're using [Sublime](https://www.sublimetext.com/) try [SublimeJSPrettier](https://github.com/jonlabelle/SublimeJsPrettier). For other integrations, please check the prettier's [homepage](https://prettier.io/).
 
 ## Guide-Lines
 1. Fork the repo and create your feature/bug branch from `master`.
 2. If you've added code that should be tested, add tests!
 3. If you've changed APIs, update the documentation.
-4. Ensure that all tests pass (`yarn run check`).
-6. Ensure your code is formatted correctly (`yarn run format`)
+4. Ensure that all tests pass (`yarn check`).
 
 ## Creating Issues
 ### Known Issues

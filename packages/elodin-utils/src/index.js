@@ -13,5 +13,5 @@ export {
   objectEach,
   objectReduce,
   parseShorthand,
-  parseLonghand
+  parseLonghand,
 }

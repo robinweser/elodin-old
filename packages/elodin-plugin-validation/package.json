@@ -1,0 +1,39 @@
+{
+    "name": "elodin-plugin-validation",
+    "version": "0.0.1",
+    "description": "Elodin plugin to validate CSS declarations",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "jsnext:main": "es/index.js",
+    "files": [
+        "LICENSE",
+        "README.md",
+        "lib/**",
+        "es/**"
+    ],
+    "repository": "https://github.com/rofrischmann/elodin",
+    "keywords": [
+        "react",
+        "react styling",
+        "inline styles",
+        "linter",
+        "cssinjs",
+        "style linting",
+        "validation",
+        "style validation",
+        "AST",
+        "compiler",
+        "parser"
+    ],
+    "author": "Robin Frischmann",
+    "license": "MIT",
+    "dependencies": {
+        "bredon-validate": "^0.0.1"
+    },
+    "peerDependencies": {
+        "bredon": "^3.0.0"
+    },
+    "devDependencies": {
+        "elodin": "^0.1.0"
+    }
+}

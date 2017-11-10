@@ -9,7 +9,7 @@ const patternShorthands = {
   borderWidth: true,
   borderStyle: true,
   borderColor: true,
-  perspectiveOrigin: true
+  perspectiveOrigin: true,
 }
 
 export default function parseLonghand(

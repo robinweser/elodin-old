@@ -3,7 +3,7 @@ import enforceShorthand from '../enforceShorthand'
 const mockPluginInterface = warnings => (style, fix) => ({
   style,
   addWarning: warning => warnings.push(warning),
-  fix: fix || false
+  fix: fix || false,
 })
 
 describe('Enforcing shorthand properties', () => {
@@ -14,7 +14,7 @@ describe('Enforcing shorthand properties', () => {
     enforceShorthand(
       pluginInterface({
         paddingLeft: '2px',
-        paddingTop: '4px'
+        paddingTop: '4px',
       })
     )
 
@@ -24,7 +24,7 @@ describe('Enforcing shorthand properties', () => {
       description:
         'Do not use the longhand properties "paddingLeft, paddingTop". Use the shorthand property "padding".',
       longhands: ['paddingLeft', 'paddingTop'],
-      shorthand: 'padding'
+      shorthand: 'padding',
     })
   })
 
@@ -35,7 +35,7 @@ describe('Enforcing shorthand properties', () => {
     enforceShorthand(
       pluginInterface({
         paddingLeft: '2px',
-        paddingTop: '4px'
+        paddingTop: '4px',
       }),
       { allowSingle: true }
     )
@@ -46,7 +46,7 @@ describe('Enforcing shorthand properties', () => {
       description:
         'Do not use the longhand properties "paddingLeft, paddingTop". Use the shorthand property "padding".',
       longhands: ['paddingLeft', 'paddingTop'],
-      shorthand: 'padding'
+      shorthand: 'padding',
     })
   })
 
@@ -56,7 +56,7 @@ describe('Enforcing shorthand properties', () => {
 
     enforceShorthand(
       pluginInterface({
-        paddingLeft: '2px'
+        paddingLeft: '2px',
       }),
       { allowSingle: true }
     )
@@ -72,7 +72,7 @@ describe('Enforcing shorthand properties', () => {
       pluginInterface({
         paddingLeft: '2px',
         paddingTop: '4px',
-        padding: '4px 2px'
+        padding: '4px 2px',
       })
     )
 
@@ -82,7 +82,7 @@ describe('Enforcing shorthand properties', () => {
       description:
         'Do not mix the shorthand property "padding" with its longhand properties "paddingLeft, paddingTop". Use the single shorthand property "padding".',
       longhands: ['paddingLeft', 'paddingTop'],
-      shorthand: 'padding'
+      shorthand: 'padding',
     })
   })
 })

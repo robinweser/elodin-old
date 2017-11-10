@@ -4,13 +4,14 @@
     "bootstrap": "lerna bootstrap",
     "build": "./scripts/build.sh",
     "clean": "lerna clean --yes && rimraf packages/*/es && rimraf packages/*/lib",
-    "check": "npm run lint && npm run test:coverage && npm run flow",
+    "check": "yarn run format && yarn run lint && yarn run test:coverage && yarn run flow",
     "format": "prettier --write \"packages/*/src/**/*.js\"",
     "flow": "flow",
     "lint": "eslint packages/*/src/**/*.js",
-    "publish": "git pull --rebase && npm run build && lerna publish",
+    "publish": "git pull --rebase && yarn run build && lerna publish",
     "test": "cross-env BABEL_ENV=commonjs jest",
     "test:coverage": "cross-env BABEL_ENV=commonjs jest --coverage",
+    "watch": "yarn run test -- --watch",
     "setup": "yarn run clean && yarn run bootstrap && yarn run build"
   },
   "jest": {
@@ -31,7 +32,6 @@
     "babel-preset-stage-0": "^6.22.0",
     "codeclimate-test-reporter": "^0.4.0",
     "cross-env": "^5.0.1",
-    "css-in-js-utils": "^1.0.3",
     "eslint": "^3.14.1",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-flowtype": "^2.30.0",
@@ -40,8 +40,8 @@
     "eslint-plugin-react": "^6.9.0",
     "flow-bin": "^0.57.3",
     "jest": "^18.1.0",
-    "lerna": "2.0.0",
-    "prettier": "^1.7.4",
+    "lerna": "^2.5.1",
+    "prettier": "^1.8.2",
     "rimraf": "^2.6.1",
     "sinon": "^1.17.7"
   }

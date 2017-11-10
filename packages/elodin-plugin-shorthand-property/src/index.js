@@ -4,7 +4,7 @@ import enforceShorthand from './enforceShorthand'
 import type { PluginInterface } from '../../../types/PluginInterface'
 
 type Options = {
-  allowSingle: boolean
+  allowSingle: boolean,
 }
 
 // TODO: enable for prefixed shorthand/longhands

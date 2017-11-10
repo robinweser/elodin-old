@@ -1,19 +1,10 @@
 /* @flow */
 import { parse, generate } from 'bredon'
-import {
-  isMultiValue,
-  isCSSValue,
-  isDimension,
-  isFunction,
-  isInteger,
-  isString,
-  isFloat,
-  isIdentifier
-} from 'bredon-types'
-import { propertyShorthands } from 'elodin-data'
+import { isValidProperty } from 'bredon-validate'
 
-import { isColor, isKeyword, isLength } from '../validators/types'
+import { isValueList, isValue } from 'bredon-types'
 
+import propertyShorthands from '../data/propertyShorthands'
 import arrayReduce from '../arrayReduce'
 
 const circularPattern = [[0, 0, 0, 0], [0, 1, 0, 1], [0, 1, 2, 1], [0, 1, 2, 3]]
@@ -22,121 +13,45 @@ const axesPattern = [[0, 0], [0, 1]]
 const patternMap = {
   padding: {
     pattern: circularPattern,
-    values: propertyShorthands.padding
+    values: propertyShorthands.padding,
   },
   margin: {
     pattern: circularPattern,
-    values: propertyShorthands.margin
+    values: propertyShorthands.margin,
   },
   borderRadius: {
     pattern: circularPattern,
-    values: propertyShorthands.borderRadius
+    values: propertyShorthands.borderRadius,
   },
   borderWidth: {
     pattern: circularPattern,
-    values: propertyShorthands.borderWidth
+    values: propertyShorthands.borderWidth,
   },
   borderStyle: {
     pattern: circularPattern,
-    values: propertyShorthands.borderStyle
+    values: propertyShorthands.borderStyle,
   },
   borderColor: {
     pattern: circularPattern,
-    values: propertyShorthands.borderColor
+    values: propertyShorthands.borderColor,
   },
   perspectiveOrigin: {
     pattern: axesPattern,
-    values: propertyShorthands.perspectiveOrigin
-  }
+    values: propertyShorthands.perspectiveOrigin,
+  },
 }
 
-const typeMap = {
-  border: {
-    borderWidth: isLength,
-    borderStyle: isKeyword('borderStyle'),
-    borderColor: isColor
-  },
-  borderTop: {
-    borderTopWidth: isLength,
-    borderTopStyle: isKeyword('borderTopStyle'),
-    borderTopColor: isColor
-  },
-  borderRight: {
-    borderRightWidth: isLength,
-    borderRightStyle: isKeyword('borderRightStyle'),
-    borderRightColor: isColor
-  },
-  borderBottom: {
-    borderBottomWidth: isLength,
-    borderBottomStyle: isKeyword('borderBottomStyle'),
-    borderBottomColor: isColor
-  },
-  borderLeft: {
-    borderLeftWidth: isLength,
-    borderLeftStyle: isKeyword('borderLeftStyle'),
-    borderLeftColor: isColor
-  },
-  outline: {
-    outlineWidth: isLength,
-    outlineStyle: isKeyword('outlineStyle'),
-    outlineColor: isColor
-  },
-  columnRule: {
-    columnRuleWidth: isLength,
-    columnRuleStyle: isKeyword('columnRuleStyle'),
-    columnRuleColor: isColor
-  },
-  columns: {
-    columnWidth: isLength,
-    columnCount: isInteger
-  },
-  textDecoration: {
-    textDecorationLine: isKeyword('textDecorationLine'),
-    textDecorationStyle: isKeyword('textDecorationStyle'),
-    textDecorationColor: isColor
-  },
-  animation: {
-    animationDuration: isDimension,
-    animationDelay: isDimension,
-    animationTimingFunction: node =>
-      isKeyword('animationTimingFunction')(node) || isFunction(node),
-    animationIterationCount: node =>
-      isKeyword('animationIterationCount')(node) || isInteger(node),
-    animationDirection: isKeyword('animationDirection'),
-    animationFillMode: isKeyword('animationFillMode'),
-    animationPlayState: isKeyword('animationPlayState'),
-    animationName: isIdentifier
-  },
-  font: {
-    fontStyle: isKeyword('fontStyle'),
-    fontVariant: isKeyword('fontVariant'),
-    fontWeight: isKeyword('fontWeight'),
-    fontSize: node => isKeyword('fontSize')(node) || isLength(node),
-    lineHeight: node =>
-      isKeyword('lineHeight')(node) ||
-      isLength(node) ||
-      isFloat(node) ||
-      isInteger(node),
-    fontFamily: node =>
-      isKeyword('fontFamily')(node) || isString(node) || isIdentifier(node)
-  }
-}
+function parseShorthandValue(property: string, ast: Object) {
+  if (isValueList(ast)) {
+    if (ast.body.length > 1) {
+      // TODO: parse multi values as well
+      return {}
+    }
 
-/* TODO:
-  background, transition
-*/
-export default function parseShorthand(
-  property: string,
-  value: string
-): ?Object {
-  const ast = parse(value)
-
-  if (isMultiValue(ast)) {
-    // TODO: parse multi values as well
-    return {}
+    return parseShorthandValue(property, ast.body[0])
   }
-  // ensure we're using single values
-  if (isCSSValue(ast)) {
+
+  if (isValue(ast)) {
     const valueCount = ast.body.length
 
     if (patternMap[property]) {
@@ -149,39 +64,48 @@ export default function parseShorthand(
           longhands[longhandProperty] = generate(
             ast.body[matchingPattern[index]]
           )
-          return longhands
-        },
-        {}
-      )
-    }
-
-    if (typeMap[property]) {
-      const types = { ...typeMap[property] }
-
-      return arrayReduce(
-        ast.body,
-        (longhands, node) => {
-          let longhandProperty
-
-          for (const longhand in types) {
-            if (types[longhand](node)) {
-              longhandProperty = longhand
-              delete types[longhand]
-              break
-            }
-          }
-
-          if (longhandProperty) {
-            longhands[longhandProperty] = generate(node)
-          }
 
           return longhands
         },
         {}
       )
     }
+
+    const longhands = [...propertyShorthands[property]]
+
+    return arrayReduce(
+      ast.body,
+      (spread, node) => {
+        const longhand = longhands.find(prop =>
+          isValidProperty(prop, generate(node))
+        )
+
+        if (longhand) {
+          longhands.splice(longhands.indexOf(longhand), 1)
+          spread[longhand] = generate(node)
+        }
+
+        return spread
+      },
+      {}
+    )
   }
 
   // TODO: error?
   return {}
+}
+
+/* TODO:
+  background, font
+*/
+export default function parseShorthand(
+  property: string,
+  value: string
+): Object {
+  if (!propertyShorthands.hasOwnProperty(property)) {
+    console.warn(`${property} is not a shorthand property.`)
+    return {}
+  }
+
+  return parseShorthandValue(property, parse(value))
 }

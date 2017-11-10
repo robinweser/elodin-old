@@ -18,13 +18,15 @@ export default function enforceLonghand(
         // TODO: fix
         addWarning({
           type: 'SHORTHAND_LONGHAND',
-          description: `Do not mix the shorthand property "${shorthand}" with its longhand properties "${longhands.join(
+          description: `Do not mix the shorthand property "${
+            shorthand
+          }" with its longhand properties "${longhands.join(
             ', '
           )}". Use the longhand properties "${longhandMap[shorthand].join(
             ', '
           )}".`,
           shorthand,
-          longhands
+          longhands,
         })
       } else {
         // if a single shorthand is used
@@ -32,11 +34,13 @@ export default function enforceLonghand(
           // TODO: fix
           addWarning({
             type: 'SHORTHAND_LONGHAND',
-            description: `Do not use the shorthand property "${shorthand}". Use the longhand properties "${longhandMap[
+            description: `Do not use the shorthand property "${
               shorthand
-            ].join(', ')}".`,
+            }". Use the longhand properties "${longhandMap[shorthand].join(
+              ', '
+            )}".`,
             shorthand,
-            longhands
+            longhands,
           })
         }
       }

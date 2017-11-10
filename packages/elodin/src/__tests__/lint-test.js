@@ -7,7 +7,7 @@ describe('Linting styles', () => {
     const plugin = sinon.spy()
     const anotherPlugin = sinon.spy()
 
-    lint({ color: 'red' }, { plugins: [plugin, anotherPlugin] })
+    lint({ plugins: [plugin, anotherPlugin] })({ color: 'red' })
 
     expect(plugin.calledOnce).toBe(true)
     expect(anotherPlugin.calledOnce).toBe(true)
@@ -20,13 +20,10 @@ describe('Linting styles', () => {
       }
     }
 
-    const warnings = lint(
-      {
-        color: 'red',
-        foo: true
-      },
-      { plugins: [plugin] }
-    )
+    const warnings = lint({ plugins: [plugin] })({
+      color: 'red',
+      foo: true,
+    })
 
     expect(warnings.length).toBe(1)
     expect(warnings[0]).toEqual({ description: 'foobar' })

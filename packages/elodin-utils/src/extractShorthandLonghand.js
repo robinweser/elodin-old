@@ -1,11 +1,11 @@
 /* @flow */
-import { propertyShorthands } from 'elodin-data'
+import propertyShorthands from './data/propertyShorthands'
 
 const shorthands = Object.keys(propertyShorthands)
 
 export type Usage = {
   longhandProps: { [shorthand: string]: Array<string> },
-  shorthandProps: Array<string>
+  shorthandProps: Array<string>,
 }
 
 export default function extractShorthandLonghand(style: Object): Usage {
@@ -32,6 +32,6 @@ export default function extractShorthandLonghand(style: Object): Usage {
 
   return {
     longhandProps,
-    shorthandProps
+    shorthandProps,
   }
 }

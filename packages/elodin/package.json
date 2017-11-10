@@ -1,6 +1,6 @@
 {
     "name": "elodin",
-    "version": "1.0.0",
+    "version": "0.1.1",
     "description": "Quality and Optimisation tools for CSS in JavaScript solutions",
     "main": "lib/index.js",
     "module": "es/index.js",
@@ -23,6 +23,6 @@
     "author": "Robin Frischmann",
     "license": "MIT",
     "dependencies": {
-        "bredon": "^1.0.1"
+        "bredon": "^3.0.0"
     }
 }

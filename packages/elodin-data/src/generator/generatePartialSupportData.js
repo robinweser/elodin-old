@@ -11,7 +11,7 @@ function gatherInformation() {
     if (properties instanceof Array !== true) {
       properties = [properties]
     }
-    properties.forEach((prop) => {
+    properties.forEach(prop => {
       if (!supportData[prop]) {
         supportData[prop] = {}
       }
@@ -25,7 +25,7 @@ function gatherInformation() {
     supportData
   )}; module.exports = partialSupport`
 }
-fs.writeFile('./src/data/compatibilityPartial.js', gatherInformation(), (err) => {
+fs.writeFile('./src/data/compatibilityPartial.js', gatherInformation(), err => {
   if (err) {
     throw err
   }

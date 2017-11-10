@@ -1,12 +1,13 @@
 /* @flow */
-import { propertyShorthands, valueInitials } from 'elodin-data'
+import propertyShorthands from '../data/propertyShorthands'
+import valueInitials from '../data/valueInitials'
 
 import arrayReduce from '../arrayReduce'
 
 const circularPattern = [
   { length: 4, matching: [1, 3] },
   { length: 3, matching: [0, 2] },
-  { length: 2, matching: [0, 1] }
+  { length: 2, matching: [0, 1] },
 ]
 
 export default function parseCircularLonghand(

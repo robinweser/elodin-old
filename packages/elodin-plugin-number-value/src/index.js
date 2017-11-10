@@ -20,10 +20,12 @@ function enforceNumber({ style, addWarning, fix }: PluginInterface) {
           } else {
             addWarning({
               type: 'NUMBER_VALUE',
-              description: `Do not apply "px" unit to "${value}". Use "${node.value}".`,
+              description: `Do not apply "px" unit to "${value}". Use "${
+                node.value
+              }".`,
               suggestion: node.value,
               property,
-              value
+              value,
             })
           }
         }

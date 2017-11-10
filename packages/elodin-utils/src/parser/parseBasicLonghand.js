@@ -1,6 +1,5 @@
 /* @flow */
-import { propertyShorthands } from 'elodin-data'
-
+import propertyShorthands from '../data/propertyShorthands'
 import arrayReduce from '../arrayReduce'
 
 export default function parseBasicLonghand(

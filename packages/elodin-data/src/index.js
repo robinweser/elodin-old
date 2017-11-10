@@ -15,5 +15,5 @@ export {
   propertyShorthands,
   valueInitials,
   valueKeywords,
-  valueSetProperties
+  valueSetProperties,
 }

@@ -1,4 +1,5 @@
 {
+    "private": true,
     "name": "elodin-plugin-shorthand-longhand",
     "version": "1.0.0",
     "description": "Elodin plugin for shorthand-longhand properties",

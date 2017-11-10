@@ -17,11 +17,13 @@ export default function enforceShorthand(
 
       addWarning({
         type: 'SHORTHAND_LONGHAND',
-        description: `Do not mix the shorthand property "${shorthand}" with its longhand properties "${longhands.join(
+        description: `Do not mix the shorthand property "${
+          shorthand
+        }" with its longhand properties "${longhands.join(
           ', '
         )}". Use the single shorthand property "${shorthand}".`,
         shorthand,
-        longhands
+        longhands,
       })
     } else {
       // if a single longhand property is used
@@ -34,7 +36,7 @@ export default function enforceShorthand(
             ', '
           )}". Use the shorthand property "${shorthand}".`,
           shorthand,
-          longhands
+          longhands,
         })
       }
     }

@@ -6,7 +6,7 @@ describe('Parsing longhand properties', () => {
       parseBasicLonghand('border', {
         borderWidth: '2px',
         borderStyle: 'solid',
-        borderColor: '#FFF'
+        borderColor: '#FFF',
       })
     ).toEqual('#FFF solid 2px')
 
@@ -14,7 +14,7 @@ describe('Parsing longhand properties', () => {
       parseBasicLonghand('border', {
         borderWidth: '2px',
         borderStyle: 'solid',
-        borderColor: '#FFF'
+        borderColor: '#FFF',
       })
     ).toEqual('#FFF solid 2px')
 
@@ -22,28 +22,28 @@ describe('Parsing longhand properties', () => {
       parseBasicLonghand('border', {
         borderWidth: '2px',
         borderStyle: 'solid',
-        borderColor: '#FFF'
+        borderColor: '#FFF',
       })
     ).toEqual('#FFF solid 2px')
 
     expect(
       parseBasicLonghand('border', {
         borderColor: 'blue',
-        borderStyle: 'solid'
+        borderStyle: 'solid',
       })
     ).toEqual('blue solid')
 
     expect(
       parseBasicLonghand('border', {
         borderWidth: '2px',
-        borderStyle: 'solid'
+        borderStyle: 'solid',
       })
     ).toEqual('solid 2px')
 
     expect(
       parseBasicLonghand('border', {
         borderWidth: '2px',
-        borderStyle: 'solid'
+        borderStyle: 'solid',
       })
     ).toEqual('solid 2px')
 
@@ -56,9 +56,9 @@ describe('Parsing longhand properties', () => {
         animationDirection: 'reverse',
         animationFillMode: 'both',
         animationPlayState: 'paused',
-        animationName: 'slidein'
+        animationName: 'slidein',
       })
-    ).toEqual('slidein 3s ease-in 1s 2 reverse both paused')
+    ).toEqual('ease-in 3s 1s 2 reverse both paused slidein')
 
     expect(
       parseBasicLonghand('animation', {
@@ -69,17 +69,17 @@ describe('Parsing longhand properties', () => {
         animationDirection: 'reverse',
         animationFillMode: 'both',
         animationPlayState: 'paused',
-        animationName: 'slidein'
+        animationName: 'slidein',
       })
-    ).toEqual('slidein 3s ease-in 1s 2 reverse both paused')
+    ).toEqual('ease-in 3s 1s 2 reverse both paused slidein')
 
     expect(
       parseBasicLonghand('animation', {
         animationDuration: '3s',
         animationTimingFunction: 'linear',
         animationDelay: '1s',
-        animationName: 'slidein'
+        animationName: 'slidein',
       })
-    ).toEqual('slidein 3s linear 1s')
+    ).toEqual('linear 3s 1s slidein')
   })
 })

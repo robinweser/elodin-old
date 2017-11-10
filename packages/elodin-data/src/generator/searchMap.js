@@ -6,7 +6,7 @@ export default {
     'borderImageRepeat',
     'borderImageSlice',
     'borderImageSource',
-    'borderImageWidth'
+    'borderImageWidth',
   ],
   flexbox: [
     'flex',
@@ -20,20 +20,20 @@ export default {
     'alignItems',
     'alignSelf',
     'justifyContent',
-    'order'
+    'order',
   ],
   'css-transitions': [
     'transition',
     'transitionDelay',
     'transitionDuration',
     'transitionProperty',
-    'transitionTimingFunction'
+    'transitionTimingFunction',
   ],
   transforms2d: [
     'transform',
     'transformOrigin',
     'transformOriginX',
-    'transformOriginY'
+    'transformOriginY',
   ],
   transforms3d: [
     'backfaceVisibility',
@@ -44,7 +44,7 @@ export default {
     'transformStyle',
     'transformOriginX',
     'transformOriginY',
-    'transformOriginZ'
+    'transformOriginZ',
   ],
   'css-animation': [
     'animation',
@@ -55,7 +55,7 @@ export default {
     'animationIterationCount',
     'animationName',
     'animationPlayState',
-    'animationTimingFunction'
+    'animationTimingFunction',
   ],
   'css-appearance': 'appearance',
   'user-select-none': 'userSelect',
@@ -68,13 +68,13 @@ export default {
     'scrollSnapPointsX',
     'scrollSnapPointsY',
     'scrollSnapDestination',
-    'scrollSnapCoordinate'
+    'scrollSnapCoordinate',
   ],
   'text-emphasis': [
     'textEmphasisPosition',
     'textEmphasis',
     'textEmphasisStyle',
-    'textEmphasisColor'
+    'textEmphasisColor',
   ],
   'css-text-align-last': 'textAlignLast',
   'css-boxdecorationbreak': 'boxDecorationBreak',
@@ -96,7 +96,7 @@ export default {
     'maskBorderOutset',
     'maskBorderRepeat',
     'maskBorder',
-    'maskType'
+    'maskType',
   ],
   'css-touch-action': 'touchAction',
   'text-size-adjust': 'textSizeAdjust',
@@ -104,12 +104,12 @@ export default {
     'textDecorationStyle',
     'textDecorationSkip',
     'textDecorationLine',
-    'textDecorationColor'
+    'textDecorationColor',
   ],
   'css-shapes': [
     'shapeImageThreshold',
     'shapeImageMargin',
-    'shapeImageOutside'
+    'shapeImageOutside',
   ],
   'css3-tabsize': 'tabSize',
   'css-filters': 'filter',
@@ -121,7 +121,7 @@ export default {
     'breakBefore',
     'breakAfter',
     'breakInside',
-    'regionFragment'
+    'regionFragment',
   ],
   'css-grid': [
     'gridTemplateColumns',
@@ -141,14 +141,14 @@ export default {
     'gridColumnGap',
     'gridRowGap',
     'gridArea',
-    'gridGap'
+    'gridGap',
   ],
   'object-fit': ['objectFit', 'objectPosition'],
   'text-overflow': 'textOverflow',
   'background-img-opts': [
     'backgroundClip',
     'backgroundOrigin',
-    'backgroundSize'
+    'backgroundSize',
   ],
   'font-feature': 'fontFeatureSettings',
   'css-boxshadow': 'boxShadow',
@@ -166,7 +166,7 @@ export default {
     'columns',
     'columnSpan',
     'columnWidth',
-    'columnGap'
+    'columnGap',
   ],
-  'css-writing-mode': ['writingMode']
+  'css-writing-mode': ['writingMode'],
 }

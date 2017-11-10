@@ -5,11 +5,11 @@ const partialSupport = require('./partialSupport')
 const changedPartial = {}
 const changedFull = {}
 
-Object.keys(fullSupport).forEach((property) => {
+Object.keys(fullSupport).forEach(property => {
   const mapValues = propertyMap[property]
   if (mapValues && mapValues.compatibility) {
     if (mapValues.compatibility.full) {
-      Object.keys(fullSupport[property]).forEach((browser) => {
+      Object.keys(fullSupport[property]).forEach(browser => {
         if (
           mapValues.compatibility.full[browser] !=
           fullSupport[property][browser]
@@ -19,7 +19,7 @@ Object.keys(fullSupport).forEach((property) => {
           }
           changedFull[property][browser] = {
             old: mapValues.compatibility.full[browser],
-            new: fullSupport[property][browser]
+            new: fullSupport[property][browser],
           }
         }
       })
@@ -27,11 +27,11 @@ Object.keys(fullSupport).forEach((property) => {
   }
 })
 
-Object.keys(partialSupport).forEach((property) => {
+Object.keys(partialSupport).forEach(property => {
   const mapValues = propertyMap[property]
   if (mapValues && mapValues.compatibility) {
     if (mapValues.compatibility.partial) {
-      Object.keys(partialSupport[property]).forEach((browser) => {
+      Object.keys(partialSupport[property]).forEach(browser => {
         if (
           mapValues.compatibility.partial[browser] !==
           partialSupport[property][browser]
@@ -41,7 +41,7 @@ Object.keys(partialSupport).forEach((property) => {
           }
           changedPartial[property][browser] = {
             old: mapValues.compatibility.partial[browser],
-            new: partialSupport[property][browser]
+            new: partialSupport[property][browser],
           }
         }
       })
@@ -54,12 +54,13 @@ let error = false
 if (Object.keys(changedPartial).length >= 1) {
   console.log('\n---- Partial Support changed: ---- \n')
 
-  Object.keys(changedPartial).forEach((prop) => {
+  Object.keys(changedPartial).forEach(prop => {
     console.log(`- ${prop}:`)
-    Object.keys(changedPartial[prop]).forEach((browser) => {
+    Object.keys(changedPartial[prop]).forEach(browser => {
       console.log(
-        `\t${browser} (old: ${changedPartial[prop][browser]
-          .old}, new: ${changedPartial[prop][browser].new})`
+        `\t${browser} (old: ${changedPartial[prop][browser].old}, new: ${
+          changedPartial[prop][browser].new
+        })`
       )
     })
   })
@@ -68,12 +69,13 @@ if (Object.keys(changedPartial).length >= 1) {
 if (Object.keys(changedFull).length >= 1) {
   console.log('\n---- Full Support changed: ---- \n')
 
-  Object.keys(changedFull).forEach((prop) => {
+  Object.keys(changedFull).forEach(prop => {
     console.log(`- ${prop}:`)
-    Object.keys(changedFull[prop]).forEach((browser) => {
+    Object.keys(changedFull[prop]).forEach(browser => {
       console.log(
-        `\t${browser} (old: ${changedFull[prop][browser]
-          .old}, new: ${changedFull[prop][browser].new})`
+        `\t${browser} (old: ${changedFull[prop][browser].old}, new: ${
+          changedFull[prop][browser].new
+        })`
       )
     })
   })

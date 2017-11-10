@@ -3,7 +3,7 @@ import numberValue from '../index'
 const mockPluginInterface = warnings => (style, fix) => ({
   style,
   addWarning: warning => warnings.push(warning),
-  fix: fix || false
+  fix: fix || false,
 })
 
 describe('Enforcing number values', () => {
@@ -15,7 +15,7 @@ describe('Enforcing number values', () => {
       pluginInterface({
         fontSize: '12px',
         lineHeight: 200,
-        width: 10
+        width: 10,
       })
     )
 
@@ -25,7 +25,7 @@ describe('Enforcing number values', () => {
       description: 'Do not apply "px" unit to "12px". Use "12".',
       property: 'fontSize',
       suggestion: 12,
-      value: '12px'
+      value: '12px',
     })
   })
 
@@ -35,7 +35,7 @@ describe('Enforcing number values', () => {
     const style = {
       fontSize: '12px',
       lineHeight: 200,
-      width: 10
+      width: 10,
     }
 
     numberValue()(pluginInterface(style, true))
@@ -44,7 +44,7 @@ describe('Enforcing number values', () => {
     expect(style).toEqual({
       fontSize: 12,
       lineHeight: 200,
-      width: 10
+      width: 10,
     })
   })
 })

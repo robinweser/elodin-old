@@ -1,4 +1,5 @@
 {
+    "private": true,
     "name": "elodin-utils",
     "version": "1.0.0",
     "description": "Elodin utilities for internal use",
@@ -23,8 +24,8 @@
     "author": "Robin Frischmann",
     "license": "MIT",
     "dependencies": {
-        "bredon": "^2.0.0",
-        "bredon-types": "^2.0.2",
-        "elodin-data": "^1.0.0"
+        "bredon": "^3.0.0",
+        "bredon-types": "^3.0.0",
+        "bredon-validate": "^0.0.1"
     }
 }
