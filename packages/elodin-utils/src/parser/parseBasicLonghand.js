@@ -5,7 +5,7 @@ import arrayReduce from '../arrayReduce'
 export default function parseBasicLonghand(
   property: string,
   longhands: Object
-) {
+): string {
   if (propertyShorthands[property]) {
     const values = arrayReduce(
       propertyShorthands[property],

@@ -24,7 +24,7 @@
     "author": "Robin Frischmann",
     "license": "MIT",
     "dependencies": {
-        "bredon-types": "^3.0.0",
+        "bredon-tools": "^3.0.0",
         "css-in-js-utils": "^2.0.0"
     },
     "peerDependencies": {

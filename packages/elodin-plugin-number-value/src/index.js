@@ -4,7 +4,7 @@ import { isCSSValue, isDimension } from 'bredon-types'
 import { objectEach } from 'elodin-utils'
 import isUnitlessProperty from 'css-in-js-utils/lib/isUnitlessProperty'
 
-import type { PluginInterface } from '../../../types/PluginInterface'
+import type { PluginInterface } from '../../../flowtypes/PluginInterface'
 
 function enforceNumber({ style, addWarning, fix }: PluginInterface) {
   objectEach(style, (value, property) => {

@@ -1,7 +1,7 @@
 /* @flow */
 import enforceLonghand from './enforceLonghand'
 
-import type { PluginInterface } from '../../../types/PluginInterface'
+import type { PluginInterface } from '../../../flowtypes/PluginInterface'
 
 type Options = {
   allowSingle: boolean,

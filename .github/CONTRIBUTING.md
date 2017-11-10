@@ -46,7 +46,7 @@ yarn format
 You can also run all four of them at the same time:
 
 ```
-yarn check
+yarn run check
 ```
 
 Note: If your tests use other elodin packages as depedencies, you might need to run `yarn build` (it's a part of `yarn setup`).

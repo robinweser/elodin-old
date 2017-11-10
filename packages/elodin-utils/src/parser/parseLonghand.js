@@ -14,7 +14,7 @@ const patternShorthands = {
 
 export default function parseLonghand(
   property: string,
-  longhands: Array<string>
+  longhands: Object
 ): string {
   if (patternShorthands[property]) {
     return parseCircularLonghand(property, longhands)

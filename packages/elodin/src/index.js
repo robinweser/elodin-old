@@ -4,7 +4,7 @@ import arrayReduce from './utils/arrayReduce'
 import parseStyle from './utils/parseStyle'
 import generateStyle from './utils/generateStyle'
 
-import type { Warning } from '../../../types/Warning'
+import type { Warning } from '../../../flowtypes/Warning'
 
 type ConfigType = {
   plugins?: Array<Function>,

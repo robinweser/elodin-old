@@ -1,7 +1,7 @@
 /* @flow */
 import { extractShorthandLonghand, longhandMap } from 'elodin-utils'
 
-import type { PluginInterface } from '../../../types/PluginInterface'
+import type { PluginInterface } from '../../../flowtypes/PluginInterface'
 
 export default function enforceLonghand(
   { style, fix, addWarning }: PluginInterface,

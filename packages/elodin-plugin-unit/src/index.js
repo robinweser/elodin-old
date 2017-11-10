@@ -4,7 +4,7 @@ import { isDimension, isInteger, isFloat, dimension } from 'bredon-types'
 import { getSingleValue, wrap } from 'bredon-tools'
 import isUnitlessProperty from 'css-in-js-utils/lib/isUnitlessProperty'
 
-import type { PluginInterface } from '../../../types/PluginInterface'
+import type { PluginInterface } from '../../../flowtypes/PluginInterface'
 
 const isNumber = node => isFloat(node) || isInteger(node)
 
@@ -94,4 +94,5 @@ function unit({ style, fix, addWarning }: PluginInterface, options: Options) {
   }
 }
 
-export default options => pluginInterface => unit(pluginInterface, options)
+export default (options: Options) => (pluginInterface: PluginInterface) =>
+  unit(pluginInterface, options)
