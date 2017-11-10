@@ -55,7 +55,9 @@ const style = {
 }
 
 // using the fix option will automatically fix warnings
-process(style) === {
+process(style)
+
+style === {
   paddingTop: '20px',
   paddingBottom: '10px',
   paddingLeft: '5em',
