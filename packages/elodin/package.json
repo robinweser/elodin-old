@@ -1,6 +1,6 @@
 {
     "name": "elodin",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Quality and Optimisation tools for CSS in JavaScript solutions",
     "main": "lib/index.js",
     "module": "es/index.js",

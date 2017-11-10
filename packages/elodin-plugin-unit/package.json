@@ -1,6 +1,6 @@
 {
     "name": "elodin-plugin-unit-value",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Elodin plugin for unit values",
     "main": "lib/index.js",
     "module": "es/index.js",
@@ -32,8 +32,8 @@
         "bredon-types": "^3.0.0"
     },
     "devDependencies": {
-        "elodin": "^0.1.0",
         "bredon": "^3.0.0",
-        "bredon-types": "^3.0.0"
+        "bredon-types": "^3.0.0",
+        "elodin": "^0.1.2"
     }
 }

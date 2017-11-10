@@ -1,6 +1,6 @@
 {
     "name": "elodin-plugin-validation",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Elodin plugin to validate CSS declarations",
     "main": "lib/index.js",
     "module": "es/index.js",
@@ -34,6 +34,6 @@
         "bredon": "^3.0.0"
     },
     "devDependencies": {
-        "elodin": "^0.1.0"
+        "elodin": "^0.1.2"
     }
 }

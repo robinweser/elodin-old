@@ -1,7 +1,7 @@
 {
     "private": true,
     "name": "elodin-plugin-shorthand-longhand",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Elodin plugin for shorthand-longhand properties",
     "main": "lib/index.js",
     "module": "es/index.js",
@@ -26,6 +26,6 @@
     "license": "MIT",
     "dependencies": {
         "css-in-js-utils": "^2.0.0",
-        "elodin-utils": "^1.0.0"
+        "elodin-utils": "^1.0.1"
     }
 }

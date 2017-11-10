@@ -1,7 +1,7 @@
 {
     "private": true,
     "name": "elodin-plugin-number-value",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Elodin plugin for number values",
     "main": "lib/index.js",
     "module": "es/index.js",
@@ -28,6 +28,6 @@
         "bredon": "^2.0.2",
         "bredon-types": "^2.0.4",
         "css-in-js-utils": "^2.0.0",
-        "elodin-utils": "^1.0.0"
+        "elodin-utils": "^1.0.1"
     }
 }
