@@ -10,7 +10,7 @@ It helps to write bulletproof and valid styles and pushes developer experience t
 ## Support Us
 Support Robin Frischmann's work on [Fela](https://github.com/rofrischmann/fela) and its ecosystem (Elodin) directly via [**Patreon**](https://www.patreon.com/rofrischmann).
 
-Or support us on [**Open Collective**](https://opencollective.com/fela) to fund community work. This also includes Bredon as well.<br>
+Or support us on [**Open Collective**](https://opencollective.com/fela) to fund community work. This also includes Elodin as well.<br>
 Thank you to all our backers!
 
 <a href="https://opencollective.com/fela/backer/0/website?requireActive=false" target="_blank"><img src="https://opencollective.com/fela/backer/0/avatar.svg?requireActive=false"></a>
@@ -78,11 +78,6 @@ warnings.forEach(warning => console.log(warning.description))
 
 ## Documentation
 > Coming soon.
-
-## Contribution
-We highly appreciate any contribution.<br>
-For more information follow the document [Contributing](.github/CONTRIBUTING.md).<br>
-Also, please read our [code of conduct](.github/CODE_OF_CONDUCT.md.md).
 
 ## Support
 Got a question? Come and join us on [Gitter](https://gitter.im/rofrischmann/elodin)!<br>
