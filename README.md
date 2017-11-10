@@ -61,9 +61,9 @@ const style = {
   width: 'solid'
 }
 
-// using the fix option will automatically fix warnings
-process(style)
+const warnings = process(style)
 
+// using the fix option will automatically fix warnings
 style === {
   paddingTop: '20px',
   paddingBottom: '10px',
@@ -79,8 +79,6 @@ If the `fix` option is disabled, Elodin will return a list of warning for every 
 Taken the above example:
 
 ```javascript
-const warnings = process(style)
-
 warnings.forEach(warning => console.log(warning.description))
 // => The value "solid" is not valid in combination with "width".
 ```
