@@ -6,23 +6,19 @@ bredon-types@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/bredon-types/-/bredon-types-3.0.0.tgz#1d49122f12df2c2868ba3065e27eede76b5af93e"
 
-bredon-validate@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/bredon-validate/-/bredon-validate-0.0.1.tgz#64f8c3f57ca105c7bc950491c87e2c2f89906315"
+bredon-validate@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/bredon-validate/-/bredon-validate-0.0.2.tgz#a845d9ce0d5e6798fe51216a8a058c159fcfefe8"
   dependencies:
-    bredon "^3.0.0"
+    bredon "^3.0.1"
     bredon-types "^3.0.0"
 
-bredon@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/bredon/-/bredon-3.0.0.tgz#300df4374587f0fe0d633b63e31590727f12bc7a"
+bredon@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/bredon/-/bredon-3.0.1.tgz#42d101c8dd7c6fca42ff4106a54049ff935d6cac"
   dependencies:
     bredon-types "^3.0.0"
     tokenize-sync "^1.0.0"
-
-elodin@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/elodin/-/elodin-0.1.0.tgz#56f8e712d997c01e05e753d0d57f0851720d54bd"
 
 tokenize-sync@^1.0.0:
   version "1.0.0"

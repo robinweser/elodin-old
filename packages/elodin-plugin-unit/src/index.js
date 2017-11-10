@@ -1,12 +1,8 @@
 /* @flow */
-import { generate } from 'bredon'
-import { isDimension, isInteger, isFloat, dimension } from 'bredon-types'
 import { getSingleValue, wrap } from 'bredon-tools'
 import isUnitlessProperty from 'css-in-js-utils/lib/isUnitlessProperty'
 
 import type { PluginInterface } from '../../../flowtypes/PluginInterface'
-
-const isNumber = node => isFloat(node) || isInteger(node)
 
 const PLUGIN_TYPE = 'UNIT'
 
@@ -28,7 +24,10 @@ function getPreferedUnits(property, { units, defaultUnit, unitsPerProperty }) {
   return removeDuplicate([defaultUnit, ...units])
 }
 
-function unit({ style, fix, addWarning }: PluginInterface, options: Options) {
+function unit(
+  { style, fix, bredon, addWarning }: PluginInterface,
+  options: Options
+) {
   const { defaultUnit = 'px', units = [], unitsPerProperty = {} } = options
 
   for (const property in style) {
@@ -42,14 +41,14 @@ function unit({ style, fix, addWarning }: PluginInterface, options: Options) {
 
     // if the value is a plain number
     if (node) {
-      if (isNumber(node)) {
+      if (bredon.isInteger(node) || bredon.isFloat(node)) {
         const preferedUnits = getPreferedUnits(property, {
           units,
           unitsPerProperty,
           defaultUnit,
         })
 
-        const newNode = dimension(node, preferedUnits[0])
+        const newNode = bredon.dimension(node, preferedUnits[0])
 
         if (fix) {
           wrap(ast.body[0]).replaceChildNode(node, newNode)
@@ -59,12 +58,12 @@ function unit({ style, fix, addWarning }: PluginInterface, options: Options) {
             description: `Do not use plain numbers for "${
               property
             }". Use one of "${preferedUnits.join(', ')}".`,
-            suggestion: generate(newNode),
+            suggestion: bredon.generate(newNode),
             property,
-            value: generate(ast),
+            value: bredon.generate(ast),
           })
         }
-      } else if (isDimension(node)) {
+      } else if (bredon.isDimension(node)) {
         const preferedUnits = getPreferedUnits(property, {
           units,
           unitsPerProperty,
@@ -72,7 +71,7 @@ function unit({ style, fix, addWarning }: PluginInterface, options: Options) {
         })
 
         if (preferedUnits.indexOf(node.unit) === -1) {
-          const newNode = dimension(node.value, preferedUnits[0])
+          const newNode = bredon.dimension(node.value, preferedUnits[0])
 
           if (fix) {
             wrap(ast.body[0]).replaceChildNode(node, newNode)
@@ -82,10 +81,10 @@ function unit({ style, fix, addWarning }: PluginInterface, options: Options) {
               description: `Do not use the unit "${node.unit}" for "${
                 property
               }". Use one of "${preferedUnits.join(', ')}".`,
-              suggestion: generate(newNode),
+              suggestion: bredon.generate(newNode),
 
               property,
-              value: generate(ast),
+              value: bredon.generate(ast),
             })
           }
         }

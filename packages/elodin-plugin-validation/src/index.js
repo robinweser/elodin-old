@@ -1,16 +1,17 @@
 /* @flow */
-import { generate } from 'bredon'
-import { isValidProperty } from 'bredon-validate'
+import isValidProperty from 'bredon-validate/lib/isValidProperty'
 
 import type { PluginInterface } from '../../../flowtypes/PluginInterface'
 
 const PLUGIN_TYPE = 'VALIDATION'
 
-function validation({ style, addWarning }: PluginInterface) {
+function validation({ style, addWarning, bredon }: PluginInterface) {
   for (const property in style) {
-    const value = generate(style[property])
+    const ast = style[property]
 
-    if (!isValidProperty(property, value)) {
+    if (!isValidProperty(property, ast)) {
+      const value = bredon.generate(ast)
+
       addWarning({
         type: PLUGIN_TYPE,
         description: `The value "${value}" is not valid in combination with "${

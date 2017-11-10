@@ -28,10 +28,7 @@
     "author": "Robin Frischmann",
     "license": "MIT",
     "dependencies": {
-        "bredon-validate": "^0.0.1"
-    },
-    "peerDependencies": {
-        "bredon": "^3.0.0"
+        "bredon-validate": "^0.0.2"
     },
     "devDependencies": {
         "elodin": "^0.1.2"

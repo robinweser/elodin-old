@@ -5,6 +5,8 @@
 Elodin is a plugin-based quality and optimization tool for CSS in JavaScript libraries.<br>
 It helps to write bulletproof and valid styles and pushes developer experience to a next level.
 
+Elodin is built on top of [Bredon](https://github.com/rofrischmann/bredon) which is a modern CSS value compiler.
+
 <img alt="TravisCI" src="https://travis-ci.org/rofrischmann/elodin.svg?branch=master"> <a href="https://codeclimate.com/github/rofrischmann/elodin/coverage"><img alt="Test Coverage" src="https://codeclimate.com/github/rofrischmann/elodin/badges/coverage.svg"></a> <img alt="npm downloads" src="https://img.shields.io/npm/dm/elodin.svg"> <img alt="npm version" src="https://badge.fury.io/js/elodin.svg"> <a href="https://gitter.im/rofrischmann/elodin"><img alt="Gitter" src="https://img.shields.io/gitter/room/rofrischmann/elodin.svg"></a>
 
 ## Support Us
@@ -29,6 +31,11 @@ Thank you to all our backers!
 yarn add elodin
 ```
 You may alternatively use `npm i --save elodin`.
+
+## Features
+* Validation using [bredon-validate](https://github.com/rofrischmann/bredon/blob/master/docs/api/bredon-validate/validate.md)
+* Most Plugins are fixable
+* Detailed Warnings
 
 ## The gist
 ```javascript

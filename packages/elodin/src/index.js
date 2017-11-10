@@ -1,4 +1,5 @@
 /* @flow */
+import * as bredon from 'bredon'
 import addWarningFactory from './utils/addWarningFactory'
 import arrayReduce from './utils/arrayReduce'
 import parseStyle from './utils/parseStyle'
@@ -26,6 +27,7 @@ export default function lint({
           style: ast,
           fix,
           addWarning,
+          bredon,
         })
 
         style = generateStyle(ast)
