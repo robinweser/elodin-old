@@ -1,4 +1,4 @@
-> **Caution**: Elodin is still highly experimental WIP. Some shown APIs might not even be released yet.
+> **Deprecated**: This repository has been renamed and deprecated. There's something new coming soon that'll be named Elodin instead, but it provides similar benefits & ideas, just in a complete different way. 
 
 # Elodin
 
